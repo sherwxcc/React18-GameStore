@@ -6,6 +6,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { AppBar, Box, SvgIcon, Toolbar, Typography } from "@mui/material/index";
 import styled from "styled-components";
 import ColorContext from "contexts/ColorContext";
+import { Link } from "react-router-dom";
 import { leftNavbarItems, rightNavbarItems } from "./constants/navbarListItems";
 
 const MenuTypography = styled(Typography).attrs(() => ({
@@ -20,8 +21,11 @@ const MenuTypography = styled(Typography).attrs(() => ({
   }
 `;
 
-const LoginTypography = styled(MenuTypography)`
+const SignInTypography = styled(MenuTypography)`
   background: ${(props) => props.theme.palette.gradient};
+  &:hover {
+    color: ${(props) => props.theme.palette.contrast};
+  }
 `;
 
 const FlexBox = styled(Box)`
@@ -49,25 +53,33 @@ const Navbar = () => {
         <AppBar position="static">
           <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
             <FlexBox>
-              <FlexBox sx={{ mr: "0.5rem", cursor: "pointer" }}>
-                <Box
-                  component="img"
-                  sx={{ width: "2rem", height: "2rem", mr: "0.5rem" }}
-                  src={GamerStopLogo}
-                />
-                <Typography variant="h3" color="contrast" sx={{ mr: "0.5rem" }}>
-                  GAMERSTOP
-                </Typography>
-              </FlexBox>
+              <Link to="/">
+                <FlexBox sx={{ mr: "0.5rem", cursor: "pointer" }}>
+                  <Box
+                    component="img"
+                    sx={{ width: "2rem", height: "2rem", mr: "0.5rem" }}
+                    src={GamerStopLogo}
+                  />
+                  <Typography
+                    variant="h3"
+                    color="contrast"
+                    sx={{ mr: "0.5rem" }}
+                  >
+                    GAMERSTOP
+                  </Typography>
+                </FlexBox>
+              </Link>
+
               {leftNavbarItems.map((el) => (
-                <MenuTypography
-                  key={el.id}
-                  variant="subtitle1"
-                  color="textPrimary"
-                  theme={theme}
-                >
-                  {el.label.toUpperCase()}
-                </MenuTypography>
+                <Link to={el.route} key={el.id}>
+                  <MenuTypography
+                    variant="subtitle1"
+                    color="textPrimary"
+                    theme={theme}
+                  >
+                    {el.label.toUpperCase()}
+                  </MenuTypography>
+                </Link>
               ))}
             </FlexBox>
 
@@ -84,13 +96,15 @@ const Navbar = () => {
                 </SvgIcon>
               </StyledIconBox>
 
-              <LoginTypography
-                variant="subtitle1"
-                color="textPrimary"
-                theme={theme}
-              >
-                LOG IN
-              </LoginTypography>
+              <Link to="/signin">
+                <SignInTypography
+                  variant="subtitle1"
+                  color="textPrimary"
+                  theme={theme}
+                >
+                  SIGN IN
+                </SignInTypography>
+              </Link>
             </FlexBox>
           </Toolbar>
         </AppBar>

@@ -6,7 +6,7 @@ export const leftNavbarItems = [
   {
     id: 0,
     label: "Products",
-    route: "/products",
+    route: "/product",
   },
   {
     id: 1,
