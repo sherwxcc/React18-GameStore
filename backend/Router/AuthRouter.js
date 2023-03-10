@@ -7,26 +7,28 @@ class AuthRouter {
 
   router() {
     let router = express.Router();
+    router.get("/hi", this.test.bind(this));
     router.post("/login", this.postLogin.bind(this));
     router.post("/signup", this.postSignup.bind(this));
     return router;
   }
 
+  test(req, res, next) {
+    res.json({ hi: "hello" });
+  }
+
   async postLogin(req, res, next) {
-    console.log(req.body);
     try {
       if (req.body.username && req.body.password) {
-        let username = req.body.username;
-        let password = req.body.password;
-        let result = await this.authService.login(username, password);
-
-        if (result.token) {
-          res.status(200).json({
-            token: result.token,
+        await this.authService
+          .login(req.body.username, req.body.password)
+          .then((result) => {
+            if (result.token)
+              return res
+                .status(200)
+                .json({ message: "Welcome", token: res.token });
+            return res.json(result);
           });
-        } else {
-          res.json({ message: result.message });
-        }
       }
     } catch (err) {
       next(err);
@@ -36,27 +38,32 @@ class AuthRouter {
 
   async postSignup(req, res, next) {
     try {
-      if (req.body.username && req.body.password && req.body.name) {
-        let username = req.body.username;
-        let password = req.body.password;
-        let name = req.body.name;
-
-        let repeatedUser = await this.authService.checkExist(username);
-        if (repeatedUser) {
-          res.json({ message: "User already exist" });
-        } else {
-          let hashedPassword = await hashFunction.hashPassword(password);
-          let newUser = {
-            username: username,
-            password: hashedPassword,
-            name: name,
-          };
-          await this.authService.signup(newUser).then((data) => {
-            res.status(200).json({
-              id: data.id,
-            });
+      if (
+        req.body.username &&
+        req.body.password &&
+        req.body.firstname &&
+        req.body.lastname
+      ) {
+        await this.authService
+          .checkExist(req.body.username)
+          .then((isRepeated) => {
+            if (isRepeated)
+              return res.status(200).json({ message: "User already exist" });
           });
-        }
+
+        await this.authService
+          .signup({
+            username: req.body.username,
+            password: req.body.password,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            admin: false,
+          })
+          .then((newUserId) => {
+            return res
+              .status(200)
+              .json({ message: "Created new user", ...newUserId });
+          });
       }
     } catch (err) {
       next(err);
@@ -65,4 +72,4 @@ class AuthRouter {
   }
 }
 
-module.exports = AuthRouter
+module.exports = AuthRouter;
