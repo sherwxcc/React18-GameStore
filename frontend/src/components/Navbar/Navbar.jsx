@@ -5,6 +5,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { AppBar, Box, SvgIcon, Toolbar, Typography } from "@mui/material/index";
 import styled from "styled-components";
+import AccountContext from "contexts/AccountContext";
 import ColorContext from "contexts/ColorContext";
 import { Link } from "react-router-dom";
 import { leftNavbarItems, rightNavbarItems } from "./constants/navbarListItems";
@@ -24,7 +25,7 @@ const MenuTypography = styled(Typography).attrs(() => ({
 const SignInTypography = styled(MenuTypography)`
   background: ${(props) => props.theme.palette.gradient};
   &:hover {
-    color: ${(props) => props.theme.palette.contrast};
+    background: ${(props) => props.theme.palette.gradientSolid};
   }
 `;
 
@@ -46,6 +47,7 @@ const StyledIconBox = styled(FlexBox)`
 
 const Navbar = () => {
   const { theme, mode, toggleMode } = useContext(ColorContext);
+  const { isLoggedIn, token, handleLogin } = useContext(AccountContext);
 
   return (
     <>
@@ -74,7 +76,7 @@ const Navbar = () => {
                 <Link to={el.route} key={el.id}>
                   <MenuTypography
                     variant="subtitle1"
-                    color="textPrimary"
+                    color="text.primary"
                     theme={theme}
                   >
                     {el.label.toUpperCase()}
@@ -86,25 +88,29 @@ const Navbar = () => {
             <FlexBox>
               {rightNavbarItems.map((el) => (
                 <StyledIconBox key={el.id} theme={theme}>
-                  <SvgIcon color="textPrimary">{el.icon}</SvgIcon>
+                  <SvgIcon color="svgPrimary">{el.icon}</SvgIcon>
                 </StyledIconBox>
               ))}
 
               <StyledIconBox theme={theme} onClick={() => toggleMode()}>
-                <SvgIcon color="textPrimary">
+                <SvgIcon color="svgPrimary">
                   {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
                 </SvgIcon>
               </StyledIconBox>
 
-              <Link to="/signin">
-                <SignInTypography
-                  variant="subtitle1"
-                  color="textPrimary"
-                  theme={theme}
-                >
-                  SIGN IN
-                </SignInTypography>
-              </Link>
+              {isLoggedIn ? (
+                "Logout"
+              ) : (
+                <Link to="/signin">
+                  <SignInTypography
+                    variant="subtitle1"
+                    color="text.primary"
+                    theme={theme}
+                  >
+                    SIGN IN
+                  </SignInTypography>
+                </Link>
+              )}
             </FlexBox>
           </Toolbar>
         </AppBar>

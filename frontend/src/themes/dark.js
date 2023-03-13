@@ -1,29 +1,38 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { globalPalette } from "./global";
 import globalStyle from "./global";
 
 const darkPalette = {
-  linearGradient: `linear-gradient(236deg, rgba(157,191,158,0.5) 33%, rgba(200,140,207,0.5) 100%);`,
+  textPrimary: "#FFF",
+  textSecondary: "#AAA",
+  textContrast: "#222",
+  linearGradient: `linear-gradient(236deg, rgba(157,191,158,0.6) 33%, rgba(200,140,207,0.6) 100%);`,
+  linearGradientSolid: `linear-gradient(236deg, rgba(157,191,158,0.2) 33%, rgba(200,140,207,0.2) 100%);`,
 };
 
 const dark = createTheme({
   palette: {
-    primary: { main: "#9DBF9E" }, // Cambridge blue
-    secondary: { main: "#D0D6B5" }, // Beige
-    error: { main: "#EE7674" }, // Light coral
-    contrast: "#C96BBC", // Sky magenta
-    contrastSecondary: "#F9B5AC", // Melon
+    primary: { main: globalPalette.primary }, // Cambridge blue
+    secondary: { main: globalPalette.secondary }, // Beige
+    error: { main: globalPalette.error }, // Light coral
+    contrast: globalPalette.contrast, // Sky magenta
+    contrastSecondary: globalPalette.contrastSecondary, // Melon
     background: {
-      default: "#222",
-      paper: "#222",
+      default: globalPalette.dark,
+      paper: globalPalette.dark,
     },
     text: {
-      primary: "#FFF",
-      secondary: "#BBB",
+      primary: darkPalette.textPrimary,
+      secondary: darkPalette.textSecondary,
+      contrast: darkPalette.textContrast,
+      dark: globalPalette.dark,
+      light: globalPalette.light,
     },
-    textPrimary: { main: "#FFF" },
-    textSecondary: { main: "#AAA" },
-    textDisabled: { main: "#555" },
+    svgPrimary: { main: darkPalette.textPrimary },
+    svgSecondary: { main: darkPalette.textSecondary },
+    svgContrast: { main: darkPalette.textContrast },
     gradient: darkPalette.linearGradient,
+    gradientSolid: darkPalette.linearGradientSolid,
     contrastThreshold: 4.5, // WCAG 2.1 Rule 1.4.3: Min. contrast = 4.5:1
     tonalOffset: 0.2,
   },

@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
+
 import ColorContext from "contexts/ColorContext";
 import Navbar from "components/Navbar/Navbar";
 import "App.scss";
@@ -25,9 +26,12 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route index element={<LandingPage />} />
-            <Route path="/product" element={<ProductListPage />} />
-            <Route path="/policy" element={<PolicyPage />} />
-            <Route path="/signin" element={<SignInPage />} />
+            <Route
+              path="/product"
+              element={<ProductListPage theme={theme} />}
+            />
+            <Route path="/policy" element={<PolicyPage theme={theme} />} />
+            <Route path="/signin" element={<SignInPage theme={theme} />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>

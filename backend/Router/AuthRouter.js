@@ -8,8 +8,9 @@ class AuthRouter {
   router() {
     let router = express.Router();
     router.get("/hi", this.test.bind(this));
-    router.post("/login", this.postLogin.bind(this));
+    router.post("/signin", this.postLogin.bind(this));
     router.post("/signup", this.postSignup.bind(this));
+    router.post("/change-password", this.postNewPassword.bind(this));
     return router;
   }
 
@@ -68,6 +69,14 @@ class AuthRouter {
     } catch (err) {
       next(err);
       throw new Error(err);
+    }
+  }
+
+  async postNewPassword(req, res, next) {
+    try {
+      //
+    } catch (error) {
+      //
     }
   }
 }

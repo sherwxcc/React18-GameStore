@@ -1,21 +1,33 @@
+export const globalPalette = {
+  primary: "#9DBF9E", // Cambridge blue
+  secondary: "#D0D6B5", // Beige
+  error: "#EE7674", // Light coral
+  contrast: "#C96BBC", // Sky magenta
+  contrastSecondary: "#F9B5AC", // Melon
+  dark: "#222",
+  light: "#FFF",
+};
+
 const globalStyle = {
   typography: {
     fontStretch: "100%",
     h1: {
       fontSize: "6rem",
-      fontFamily: "Cooper Hewitt",
+      // fontFamily: "Cooper Hewitt",
+      fontFamily: "Rubik",
       fontWeight: 700,
     },
     h2: {
-      fontSize: "4rem",
-      fontFamily: "Cooper Hewitt",
+      fontSize: "3rem",
+      // fontFamily: "Cooper Hewitt",
+      fontFamily: "Rubik",
       fontWeight: 700,
     },
     h3: {
-      fontSize: "1.3rem",
-      fontFamily: "Cooper Hewitt",
+      fontSize: "2rem",
+      // fontFamily: "Cooper Hewitt",
+      fontFamily: "Rubik",
       fontWeight: 700,
-      letterSpacing: "0.1rem",
     },
     subtitle1: {
       fontSize: "0.9rem",
@@ -30,7 +42,7 @@ const globalStyle = {
     body2: {
       fontSize: "0.9rem",
       fontFamily: "Source Sans Pro",
-      fontWeight: 400,
+      fontWeight: 700,
     },
     button: {
       fontSize: "1.2rem",
@@ -38,9 +50,9 @@ const globalStyle = {
       fontWeight: 500,
     },
     caption: {
-      fontSize: "1rem",
+      fontSize: "0.8rem",
       fontFamily: "Source Sans Pro",
-      fontWeight: 400,
+      fontWeight: 700,
     },
     overline: {
       fontSize: "1rem",
@@ -110,6 +122,33 @@ const globalStyle = {
           "&:hover": {
             backgroundColor: "unset",
           },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: "10px",
+        },
+      },
+    },
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          ":before": {
+            borderBottom: `2px solid #DDD`,
+          },
+          ":hover:before": {
+            borderBottom: `2px solid #DDD !important`,
+          },
+          ":after": {
+            borderBottom: `2px solid ${globalPalette.primary}`,
+          },
+        },
+        input: {
+          height: "2.5rem",
+          fontSize: "0.9rem",
+          fontWeight: "700",
         },
       },
     },

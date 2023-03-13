@@ -3,10 +3,14 @@ import "@fontsource/cooper-hewitt/500.css";
 import "@fontsource/cooper-hewitt/700.css";
 import "@fontsource/source-sans-pro/400.css";
 import "@fontsource/source-sans-pro/700.css";
+import "@fontsource/rubik/400.css";
+import "@fontsource/rubik/500.css";
+import "@fontsource/rubik/700.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { AccountProvider } from "contexts/AccountContext";
 import { ColorProvider } from "contexts/ColorContext";
 import App from "App.jsx";
 
@@ -14,9 +18,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ColorProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AccountProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AccountProvider>
     </ColorProvider>
   </React.StrictMode>
 );
