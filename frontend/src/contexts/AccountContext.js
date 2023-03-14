@@ -6,6 +6,7 @@ const AccountContext = createContext();
 
 export function AccountProvider({ children }) {
   const [token, setToken] = useState("");
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     // Check login jwt
@@ -16,22 +17,38 @@ export function AccountProvider({ children }) {
   }, [token]);
 
   const handleLogin = async (data) => {
-    let request = {
-      url: API.signIn.url,
-      method: API.signIn.method,
+    let req = {
+      url: API.logIn.url,
+      method: API.logIn.method,
       params: {},
       data,
     };
-    await apiRequest(request).then((res, rej) => {
-      console.log(res);
-      if (res.token) {
-        setToken(res.token);
-      }
-    });
+    let res = await apiRequest(req);
+    if (res.code === 20000) {
+      setToken(res.token);
+      setUsername(res.username);
+      localStorage.setItem("gspToken", res.token);
+      localStorage.setItem("gspUsername", res.username);
+    }
+  };
+
+  const handleRegister = async (data) => {
+    let req = {
+      url: API.register.url,
+      method: API.register.method,
+      params: {},
+      data,
+    };
+    let res = await apiRequest(req);
+    if (res.code === 20000) {
+      //
+    }
   };
 
   return (
-    <AccountContext.Provider value={{ isLoggedIn, token, handleLogin }}>
+    <AccountContext.Provider
+      value={{ isLoggedIn, token, username, handleLogin, handleRegister }}
+    >
       {children}
     </AccountContext.Provider>
   );

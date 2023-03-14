@@ -34,6 +34,11 @@ const globalStyle = {
       fontFamily: "Source Sans Pro",
       fontWeight: 700,
     },
+    subtitle2: {
+      fontSize: "1rem",
+      fontFamily: "Source Sans Pro",
+      fontWeight: 700,
+    },
     body1: {
       fontSize: "1rem",
       fontFamily: "Source Sans Pro",

@@ -13,6 +13,7 @@ import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
 import ColorContext from "contexts/ColorContext";
 import Navbar from "components/Navbar/Navbar";
+import CustomMessage from "components/CustomMessage/CustomMessage";
 import "App.scss";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <CssBaseline />
         <div id="app">
           <Navbar />
+          <CustomMessage />
           <Routes>
             <Route index element={<LandingPage />} />
             <Route

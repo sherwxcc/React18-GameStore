@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
-  timeout: 60,
+  timeout: 30000, // 30000ms = 30s
 });
 
 export const apiRequest = async ({
@@ -12,14 +12,13 @@ export const apiRequest = async ({
   data = {},
   token = null,
 }) => {
-  console.table({ url, method, params, data, token });
-  return await axiosInstance
-    .request({ url, method, params, data })
-    .then((res, rej) => {
-      console.log("res", res);
+  try {
+    console.table({ url, method, params, data, token });
+    let res = await axiosInstance.request({ url, method, params, data });
+    if (res.status === 200) {
       return res;
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+    }
+  } catch (err) {
+    throw err;
+  }
 };

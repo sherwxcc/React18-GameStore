@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AccountContext from "contexts/AccountContext";
 import useVisibility from "hooks/useVisibility";
 
+import CustomButton from "components/CustomButton/CustomButton";
 import CustomCard from "components/CustomCard/CustomCard";
+
 import {
   FormControl,
   Input,
@@ -15,7 +18,15 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 function RegisterForm() {
+  const { isLoggedIn, token, handleLogin, handleRegister } =
+    useContext(AccountContext);
   const [isVisible, handleVisibility] = useVisibility();
+  const [newUser, setNewUser] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+  });
 
   return (
     <>
@@ -41,6 +52,12 @@ function RegisterForm() {
                 <BadgeIcon color="svgPrimary" />
               </InputAdornment>
             }
+            onChange={(e) =>
+              setNewUser({
+                ...newUser,
+                firstname: e.currentTarget.value,
+              })
+            }
           ></Input>
         </FormControl>
         <Typography variant="body2" color="text.primary" sx={{ mt: "1.5rem" }}>
@@ -53,6 +70,12 @@ function RegisterForm() {
               <InputAdornment position="start">
                 <BadgeIcon color="svgPrimary" />
               </InputAdornment>
+            }
+            onChange={(e) =>
+              setNewUser({
+                ...newUser,
+                lastname: e.currentTarget.value,
+              })
             }
           ></Input>
         </FormControl>
@@ -67,12 +90,18 @@ function RegisterForm() {
                 <AccountBoxIcon color="svgPrimary" />
               </InputAdornment>
             }
+            onChange={(e) =>
+              setNewUser({
+                ...newUser,
+                username: e.currentTarget.value,
+              })
+            }
           ></Input>
         </FormControl>
         <Typography variant="body2" color="text.primary" sx={{ mt: "1.5rem" }}>
           Password
         </Typography>
-        <FormControl fullWidth>
+        <FormControl fullWidth sx={{ mb: "1rem" }}>
           <Input
             type={isVisible ? "text" : "password"}
             placeholder="Type your password"
@@ -94,8 +123,17 @@ function RegisterForm() {
                 )}
               </InputAdornment>
             }
+            onChange={(e) =>
+              setNewUser({
+                ...newUser,
+                password: e.currentTarget.value,
+              })
+            }
           ></Input>
         </FormControl>
+        <CustomButton variant="contained" color="primary">
+          REGISTER
+        </CustomButton>
       </CustomCard>
     </>
   );
