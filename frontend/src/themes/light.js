@@ -7,8 +7,8 @@ const lightPalette = {
   textSecondary: "#AAA",
   textContrast: "#333",
   linearGradient: `linear-gradient(236deg, rgba(157,191,158,0.3) 33%, rgba(200,140,207,0.3) 100%);`,
-  linearGradientSolid: `linear-gradient(236deg, rgba(157,191,158) 33%, rgba(200,140,207) 100%);`,
-  reverseGradient: `linear-gradient(236deg,rgba(200,140,207,0.3) 33%, rgba(157,191,158,0.3) 100%);`,
+  linearGradientLight: `linear-gradient(236deg, rgba(157,191,158,0.4) 33%, rgba(200,140,207,0.4) 100%);`,
+  linearGradientDim: `linear-gradient(236deg, rgba(157,191,158,0.2) 33%, rgba(200,140,207,0.2) 100%);`,
 };
 
 const light = createTheme({
@@ -33,7 +33,8 @@ const light = createTheme({
     svgSecondary: { main: lightPalette.textSecondary },
     svgContrast: { main: lightPalette.textContrast },
     gradient: lightPalette.linearGradient,
-    gradientSolid: lightPalette.linearGradient,
+    gradientLight: lightPalette.linearGradientLight,
+    gradientDim: lightPalette.linearGradientDim,
     contrastThreshold: 4.5, // WCAG 2.1 Rule 1.4.3: Min. contrast = 4.5:1
     tonalOffset: 0.2,
   },

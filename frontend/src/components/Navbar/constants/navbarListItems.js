@@ -18,13 +18,13 @@ export const leftNavbarItems = [
 export const rightNavbarItems = [
   {
     id: 0,
-    icon: <LanguageIcon />,
-    label: "Lang",
-  },
-  {
-    id: 1,
     icon: <ShoppingCartIcon />,
     label: "Cart",
     route: "/cart",
+  },
+  {
+    id: 1,
+    icon: <LanguageIcon />,
+    label: "Lang",
   },
 ];

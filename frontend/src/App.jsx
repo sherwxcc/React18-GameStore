@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import ErrorPage from "views/ErrorPage/ErrorPage";
 import LandingPage from "views/LandingPage/LandingPage";
-import LoadingPage from "views/LoadingPage/LoadingPage";
+// import LoadingPage from "views/LoadingPage/LoadingPage";
 import SignInPage from "views/SignInPage/SignInPage";
 import PolicyPage from "views/PolicyPage/PolicyPage";
 import ProductListPage from "views/ProductListPage/ProductListPage";
@@ -11,13 +11,14 @@ import { Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
+// import AccountContext from "contexts/AccountContext";
 import ColorContext from "contexts/ColorContext";
 import Navbar from "components/Navbar/Navbar";
-import CustomMessage from "components/CustomMessage/CustomMessage";
+import CustomMessage from "components/customUI/CustomMessage";
 import "App.scss";
 
 const App = () => {
-  const { theme, mode } = useContext(ColorContext);
+  const { theme } = useContext(ColorContext);
 
   return (
     <>

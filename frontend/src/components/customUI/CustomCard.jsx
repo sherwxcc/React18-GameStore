@@ -1,4 +1,3 @@
-import useMediaQuery from "@mui/material/useMediaQuery";
 import styled from "styled-components";
 import Card from "@mui/material/Card";
 

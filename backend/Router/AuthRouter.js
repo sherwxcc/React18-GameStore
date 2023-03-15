@@ -9,7 +9,7 @@ class AuthRouter {
     let router = express.Router();
     router.get("/hi", this.test.bind(this));
     router.post("/login", this.postLogin.bind(this));
-    router.post("/signup", this.postRegister.bind(this));
+    router.post("/register", this.postRegister.bind(this));
     router.post("/change-password", this.postNewPassword.bind(this));
     return router;
   }
@@ -43,7 +43,7 @@ class AuthRouter {
     }
   }
 
-  // User register url: /user/signup
+  // User register url: /user/register
   async postRegister(req, res, next) {
     try {
       if (
@@ -52,12 +52,15 @@ class AuthRouter {
         req.body.firstname &&
         req.body.lastname
       ) {
+        // Check if username is already taken
         let result = await this.authService.checkExist(req.body.username);
+        console.log("EXIST?: ", result);
 
         if (result) {
-          return res.status(200).json({ code: 10000 });
+          return res.status(200).json(result);
         }
 
+        // Register new user
         result = await this.authService.register({
           username: req.body.username,
           password: req.body.password,
@@ -65,6 +68,8 @@ class AuthRouter {
           lastname: req.body.lastname,
           admin: false,
         });
+
+        console.log("CREATED?: ", result);
 
         return res.status(200).json(result);
       }

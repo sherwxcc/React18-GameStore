@@ -15,7 +15,7 @@ const ContainedButton = styled(Button).attrs(() => ({
 `;
 
 function CustomButton({ children, onClick }) {
-  const { theme, mode, toggleMode } = useContext(ColorContext);
+  const { theme } = useContext(ColorContext);
 
   return (
     <>

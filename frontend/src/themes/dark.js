@@ -7,7 +7,8 @@ const darkPalette = {
   textSecondary: "#AAA",
   textContrast: "#222",
   linearGradient: `linear-gradient(236deg, rgba(157,191,158,0.6) 33%, rgba(200,140,207,0.6) 100%);`,
-  linearGradientSolid: `linear-gradient(236deg, rgba(157,191,158,0.2) 33%, rgba(200,140,207,0.2) 100%);`,
+  linearGradientLight: `linear-gradient(236deg, rgba(157,191,158,0.8) 33%, rgba(200,140,207,0.8) 100%);`,
+  linearGradientDim: `linear-gradient(236deg, rgba(157,191,158,0.2) 33%, rgba(200,140,207,0.2) 100%);`,
 };
 
 const dark = createTheme({
@@ -32,7 +33,8 @@ const dark = createTheme({
     svgSecondary: { main: darkPalette.textSecondary },
     svgContrast: { main: darkPalette.textContrast },
     gradient: darkPalette.linearGradient,
-    gradientSolid: darkPalette.linearGradientSolid,
+    gradientLight: darkPalette.linearGradientLight,
+    gradientDim: darkPalette.linearGradientDim,
     contrastThreshold: 4.5, // WCAG 2.1 Rule 1.4.3: Min. contrast = 4.5:1
     tonalOffset: 0.2,
   },

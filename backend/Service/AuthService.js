@@ -15,7 +15,7 @@ class AuthService {
     console.log("Matched: ", matchedUser);
 
     if (matchedUser.length) {
-      return true;
+      return { code: 10000 }; // User already exit
     } else {
       return false;
     }
@@ -39,7 +39,12 @@ class AuthService {
           username: matchedUser[0].username,
         };
         let token = jwt.sign(payload, config.jwtSecret);
-        return { code: 20000, token, username }; // Login success
+        return {
+          code: 20000,
+          token,
+          username,
+          userId: matchedUser[0].user_id,
+        }; // Login success
       } else {
         return { code: 10001 }; // Incorrect password
       }

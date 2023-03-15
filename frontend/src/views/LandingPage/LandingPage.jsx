@@ -1,5 +1,3 @@
-import banner from "assets/banners/banner.jpg";
-
 function LandingPage() {
   return (
     <>

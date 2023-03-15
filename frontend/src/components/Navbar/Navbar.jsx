@@ -25,7 +25,7 @@ const MenuTypography = styled(Typography).attrs(() => ({
 const SignInTypography = styled(MenuTypography)`
   background: ${(props) => props.theme.palette.gradient};
   &:hover {
-    background: ${(props) => props.theme.palette.gradientSolid};
+    background: ${(props) => props.theme.palette.gradientLight};
   }
 `;
 
@@ -47,7 +47,7 @@ const StyledIconBox = styled(FlexBox)`
 
 const Navbar = () => {
   const { theme, mode, toggleMode } = useContext(ColorContext);
-  const { isLoggedIn, token, handleLogin } = useContext(AccountContext);
+  const { isLoggedIn, user, handleLogOut } = useContext(AccountContext);
 
   return (
     <>
@@ -99,7 +99,15 @@ const Navbar = () => {
               </StyledIconBox>
 
               {isLoggedIn ? (
-                "Logout"
+                <SignInTypography
+                  variant="subtitle1"
+                  color="text.primary"
+                  theme={theme}
+                  sx={{ minWidth: "100px", textAlign: "center" }}
+                  onClick={() => handleLogOut()}
+                >
+                  {user?.username || "LOG OUT"}
+                </SignInTypography>
               ) : (
                 <Link to="/signin">
                   <SignInTypography

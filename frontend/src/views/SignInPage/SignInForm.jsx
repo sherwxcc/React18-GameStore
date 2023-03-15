@@ -1,9 +1,13 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import AccountContext from "contexts/AccountContext";
+import useValidation from "hooks/useValidation";
 import useVisibility from "hooks/useVisibility";
 
-import CustomButton from "components/CustomButton/CustomButton";
-import CustomCard from "components/CustomCard/CustomCard";
+import {
+  CustomButton,
+  CustomCard,
+  CustomFormHelperText,
+} from "components/customUI/index";
 import {
   Box,
   FormControl,
@@ -17,14 +21,39 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 function SignInForm() {
-  const { isLoggedIn, token, handleLogin, handleRegister } =
-    useContext(AccountContext);
+  const { handleLogIn } = useContext(AccountContext);
+
+  const [inputValue, inputMsg, setInputValue, setInputMsg] = useValidation();
   const [isVisible, handleVisibility] = useVisibility();
-  const [credential, setCredential] = useState({ username: "", password: "" });
+
+  const loginHandler = () => {
+    if (inputValue.username && inputValue.password) {
+      return handleLogIn({
+        username: inputValue.username,
+        password: inputValue.password,
+      });
+    }
+
+    if (!inputValue.username) {
+      setInputMsg(
+        setInputMsg({
+          ...inputMsg,
+          username: { status: "error", msg: "This field is required" },
+        })
+      );
+    }
+    if (!inputValue.password) {
+      setInputMsg(
+        setInputMsg({
+          ...inputMsg,
+          password: { status: "error", msg: "This field is required" },
+        })
+      );
+    }
+  };
 
   return (
     <>
-      {/* Sign In */}
       <CustomCard>
         <Typography
           variant="h3"
@@ -44,18 +73,32 @@ function SignInForm() {
               placeholder="Type your username"
               required
               type="text"
+              value={inputValue.username}
+              error={inputMsg.username.status === "error"}
               startAdornment={
                 <InputAdornment position="start">
                   <AccountBoxIcon color="svgPrimary" />
                 </InputAdornment>
               }
               onChange={(e) =>
-                setCredential({
-                  ...credential,
+                setInputValue({
+                  ...inputValue,
                   username: e.currentTarget.value,
                 })
               }
+              onBlur={(e) => {
+                setInputValue({
+                  ...inputValue,
+                  username: inputValue.username.trim(),
+                });
+              }}
             ></Input>
+            <CustomFormHelperText
+              margin="dense"
+              type={inputMsg.username.status}
+            >
+              {inputMsg.username.msg}
+            </CustomFormHelperText>
           </FormControl>
           <Typography
             variant="body2"
@@ -69,6 +112,8 @@ function SignInForm() {
               placeholder="Type your password"
               required
               type={isVisible ? "text" : "password"}
+              value={inputValue.password}
+              error={inputMsg.password.status === "error"}
               startAdornment={
                 <InputAdornment position="start">
                   <VpnKeyIcon color="svgPrimary" />
@@ -88,12 +133,24 @@ function SignInForm() {
                 </InputAdornment>
               }
               onChange={(e) =>
-                setCredential({
-                  ...credential,
+                setInputValue({
+                  ...inputValue,
                   password: e.currentTarget.value,
                 })
               }
+              onBlur={(e) => {
+                setInputValue({
+                  ...inputValue,
+                  password: e.currentTarget.value.trim(),
+                });
+              }}
             ></Input>
+            <CustomFormHelperText
+              margin="dense"
+              type={inputMsg.password.status}
+            >
+              {inputMsg.password.msg}
+            </CustomFormHelperText>
           </FormControl>
 
           <Typography
@@ -113,10 +170,7 @@ function SignInForm() {
         <CustomButton
           variant="contained"
           color="primary"
-          onClick={(e) => {
-            e.stopPropagation();
-            handleLogin(credential);
-          }}
+          onClick={() => loginHandler()}
         >
           SIGN IN
         </CustomButton>

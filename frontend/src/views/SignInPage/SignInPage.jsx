@@ -7,7 +7,7 @@ const GradientBox = styled(Box).attrs(() => ({
   variant: "gradient",
   padding: "2rem",
 }))`
-  background: ${(props) => props.theme.palette.gradientSolid};
+  background: ${(props) => props.theme.palette.gradientDim};
 `;
 
 function SignInPage({ theme }) {

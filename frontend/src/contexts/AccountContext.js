@@ -1,35 +1,51 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { apiRequest } from "lib/axios";
 import API from "data/api";
 
 const AccountContext = createContext();
 
 export function AccountProvider({ children }) {
-  const [token, setToken] = useState("");
-  const [username, setUsername] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({ token: "", userId: null, username: "" });
 
   useEffect(() => {
-    // Check login jwt
+    let localUser = JSON.parse(localStorage.getItem("gspUser"));
+    if (localUser) {
+      setUser({
+        token: localUser.token,
+        userId: localUser.userId,
+        username: localUser.username,
+      });
+      setIsLoggedIn(true);
+    }
   }, []);
 
-  const isLoggedIn = useMemo(() => {
-    return token ? true : false;
-  }, [token]);
-
-  const handleLogin = async (data) => {
+  const handleLogIn = async (data) => {
     let req = {
       url: API.logIn.url,
       method: API.logIn.method,
       params: {},
       data,
+      token: null,
     };
     let res = await apiRequest(req);
-    if (res.code === 20000) {
-      setToken(res.token);
-      setUsername(res.username);
-      localStorage.setItem("gspToken", res.token);
-      localStorage.setItem("gspUsername", res.username);
+    if (res.data.code === 20000) {
+      let user = {
+        token: res.data.token,
+        username: res.data.username,
+        userId: res.data.userId,
+      };
+      localStorage.setItem("gspUser", JSON.stringify(user));
+      setUser(user);
+      setIsLoggedIn(true);
     }
+  };
+
+  const handleLogOut = () => {
+    console.log("LOGOUT");
+    localStorage.removeItem("gspUser");
+    setUser({ token: "", userId: null, username: "" });
+    setIsLoggedIn(false);
   };
 
   const handleRegister = async (data) => {
@@ -38,16 +54,18 @@ export function AccountProvider({ children }) {
       method: API.register.method,
       params: {},
       data,
+      token: null,
     };
     let res = await apiRequest(req);
-    if (res.code === 20000) {
-      //
+
+    if (res.data) {
+      console.log(res);
     }
   };
 
   return (
     <AccountContext.Provider
-      value={{ isLoggedIn, token, username, handleLogin, handleRegister }}
+      value={{ isLoggedIn, user, handleLogIn, handleLogOut, handleRegister }}
     >
       {children}
     </AccountContext.Provider>
