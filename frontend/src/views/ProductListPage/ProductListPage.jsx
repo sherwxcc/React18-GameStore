@@ -1,7 +1,9 @@
+import ProductList from "./ProductList";
+
 function ProductListPage() {
   return (
     <>
-      <div>ProductList</div>
+      <ProductList />
     </>
   );
 }

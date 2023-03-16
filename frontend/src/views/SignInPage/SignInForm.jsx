@@ -7,7 +7,7 @@ import MESSAGE_CODE from "data/messageCode";
 
 import {
   CustomButton,
-  CustomCard,
+  CustomFormCard,
   CustomFormHelperText,
 } from "components/customUI/index";
 import {
@@ -76,7 +76,7 @@ function SignInForm() {
 
   return (
     <>
-      <CustomCard>
+      <CustomFormCard>
         <Typography
           variant="h3"
           align="center"
@@ -210,7 +210,7 @@ function SignInForm() {
         >
           SIGN IN
         </CustomButton>
-      </CustomCard>
+      </CustomFormCard>
     </>
   );
 }

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Card from "@mui/material/Card";
 
-const StyledCard = styled(Card).attrs(() => ({
-  variant: "basic",
+export const FormCard = styled(Card).attrs(() => ({
+  variant: "form",
 }))`
   padding: 2rem;
   margin: 2rem;
@@ -11,22 +11,12 @@ const StyledCard = styled(Card).attrs(() => ({
   max-width: 450px;
 `;
 
-// const FormCard = styled(Card).attrs(() => ({
-//   variant: "form",
-// }))`
-//   padding: 2rem;
-//   margin: 2rem;
-//   min-width: 400px;
-//   width: 40vw;
-//   max-width: 450px;
-// `;
-
-function CustomCard({ children }) {
-  return (
-    <StyledCard raised={false} variant="basic">
-      {children}
-    </StyledCard>
-  );
-}
-
-export default CustomCard;
+export const ProductCard = styled(Card).attrs(() => ({
+  variant: "product",
+}))`
+  padding: 1rem;
+  margin: 1rem;
+  min-width: 300px;
+  width: 300px;
+  border-radius: 5px !important;
+`;

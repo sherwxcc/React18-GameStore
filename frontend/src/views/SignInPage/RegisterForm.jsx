@@ -5,9 +5,11 @@ import MessageContext from "contexts/MessageContext";
 import useVisibility from "hooks/useVisibility";
 import useValidation from "hooks/useValidation";
 
-import CustomButton from "components/customUI/CustomButton";
-import CustomCard from "components/customUI/CustomCard";
-import CustomFormHelperText from "components/customUI/CustomFormHelperText";
+import {
+  CustomButton,
+  CustomFormHelperText,
+  CustomFormCard,
+} from "components/customUI/index";
 
 import MESSAGE_CODE from "data/messageCode";
 
@@ -81,7 +83,7 @@ function RegisterForm() {
   return (
     <>
       {/* Register */}
-      <CustomCard>
+      <CustomFormCard>
         <Typography
           variant="h3"
           align="center"
@@ -240,7 +242,7 @@ function RegisterForm() {
         >
           REGISTER
         </CustomButton>
-      </CustomCard>
+      </CustomFormCard>
     </>
   );
 }
