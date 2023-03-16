@@ -11,6 +11,16 @@ const StyledCard = styled(Card).attrs(() => ({
   max-width: 450px;
 `;
 
+// const FormCard = styled(Card).attrs(() => ({
+//   variant: "form",
+// }))`
+//   padding: 2rem;
+//   margin: 2rem;
+//   min-width: 400px;
+//   width: 40vw;
+//   max-width: 450px;
+// `;
+
 function CustomCard({ children }) {
   return (
     <StyledCard raised={false} variant="basic">

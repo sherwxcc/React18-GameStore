@@ -9,15 +9,22 @@ exports.seed = async function (knex) {
       firstname: "Sherman",
       lastname: "Wong",
       username: "sherman",
-      password: "123",
+      password: "$2b$10$8sIEOC3OU1IXJpOeqEz0wONGbglwYVA07Cz00G3kqR2t11kcN6Naa",
       admin: false,
     },
     {
-      firstname: "Alice",
-      lastname: "Admin",
-      username: "admin",
-      password: "123",
-      admin: true,
+      firstname: "Will",
+      lastname: "Byers",
+      username: "will",
+      password: "$2b$10$8sIEOC3OU1IXJpOeqEz0wONGbglwYVA07Cz00G3kqR2t11kcN6Naa",
+      admin: false,
+    },
+    {
+      firstname: "Dustin",
+      lastname: "Henderson",
+      username: "dustin",
+      password: "$2b$10$8sIEOC3OU1IXJpOeqEz0wONGbglwYVA07Cz00G3kqR2t11kcN6Naa",
+      admin: false,
     },
   ]);
 };

@@ -1,25 +1,44 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Alert, Snackbar } from "@mui/material/index";
+import MessageContext from "contexts/MessageContext";
+import Slide from "@mui/material/Slide";
 
-function CustomMessage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+function TransitionDown(props) {
+  return <Slide {...props} direction="down" />;
+}
+
+function CustomMessage({ theme }) {
+  const { message } = useContext(MessageContext);
+
+  const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    if (message.content) {
+      setIsOpen(true);
+    }
+    return () => {
+      setIsOpen(false);
+    };
+  }, [message]);
 
   return (
     <>
       <Snackbar
         open={isOpen}
-        autoHideDuration={5000}
-        onClose={() => handleClose}
+        onClose={() => setIsOpen(false)}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        TransitionComponent={TransitionDown}
       >
         <Alert
-          severity="error"
-          onClose={() => handleClose}
-          sx={{ width: "100%" }}
+          severity={message.severity}
+          sx={{
+            width: "500px",
+            background: `${message.severity} === 'error' ? `,
+          }}
+          onClose={() => setIsOpen(false)}
         >
-          This is an error message!
+          {message.content}
         </Alert>
       </Snackbar>
     </>

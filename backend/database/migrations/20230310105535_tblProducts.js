@@ -7,7 +7,7 @@ exports.up = function (knex) {
     table.increments("prod_id");
     table.string("prod_name").notNullable().unique();
     table.string("img_url");
-    table.decimal("price", 2).notNullable();
+    table.decimal("price", 10, 2).notNullable();
     table.integer("brand_id").unsigned().notNullable();
     table
       .foreign("brand_id")

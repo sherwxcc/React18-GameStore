@@ -15,7 +15,7 @@ class AuthService {
     console.log("Matched: ", matchedUser);
 
     if (matchedUser.length) {
-      return { code: 10000 }; // User already exit
+      return { code: 10003 }; // User already exit
     } else {
       return false;
     }
@@ -55,10 +55,11 @@ class AuthService {
 
   async register(newUser) {
     let hashedPassword = await hashFunction.hashPassword(newUser.password);
-    let user = await this.knex("tblUsers")
-      .insert({ ...newUser, password: hashedPassword })
-      .returning(["user_id", "username"]);
-    return { code: 20000, user };
+    await this.knex("tblUsers").insert({
+      ...newUser,
+      password: hashedPassword,
+    });
+    return { code: 20001 };
   }
 }
 

@@ -8,6 +8,7 @@ export function AccountProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({ token: "", userId: null, username: "" });
 
+  // Check if user is present in local storage
   useEffect(() => {
     let localUser = JSON.parse(localStorage.getItem("gspUser"));
     if (localUser) {
@@ -39,6 +40,8 @@ export function AccountProvider({ children }) {
       setUser(user);
       setIsLoggedIn(true);
     }
+
+    return res.data;
   };
 
   const handleLogOut = () => {
@@ -58,9 +61,7 @@ export function AccountProvider({ children }) {
     };
     let res = await apiRequest(req);
 
-    if (res.data) {
-      console.log(res);
-    }
+    return res.data;
   };
 
   return (

@@ -18,7 +18,7 @@ const globalStyle = {
       fontWeight: 700,
     },
     h2: {
-      fontSize: "3rem",
+      fontSize: "2.5rem",
       // fontFamily: "Cooper Hewitt",
       fontFamily: "Rubik",
       fontWeight: 700,

@@ -17,7 +17,7 @@ const useValidation = () => {
   });
 
   const nameCheck = (namefield) => {
-    checkName(inputValue[namefield].trim())
+    checkName(inputValue[namefield]?.trim())
       ? setInputMsg({
           ...inputMsg,
           [namefield]: { status: "success", msg: "OK!" },
@@ -32,6 +32,7 @@ const useValidation = () => {
   };
 
   const usernameCheck = () => {
+    console.log("NEW USERNAME? ", inputValue.username);
     checkAlphanum(inputValue.username.trim())
       ? setInputMsg({
           ...inputMsg,
@@ -61,6 +62,24 @@ const useValidation = () => {
         });
   };
 
+  const resetInputValue = () => {
+    setInputValue({
+      firstname: "",
+      lastname: "",
+      username: "",
+      password: "",
+    });
+  };
+
+  const resetInputMsg = () => {
+    setInputMsg({
+      firstname: { status: "", msg: "" },
+      lastname: { status: "", msg: "" },
+      username: { status: "", msg: "" },
+      password: { status: "", msg: "" },
+    });
+  };
+
   return [
     inputValue,
     inputMsg,
@@ -69,6 +88,8 @@ const useValidation = () => {
     usernameCheck,
     nameCheck,
     passwordCheck,
+    resetInputValue,
+    resetInputMsg,
   ];
 };
 

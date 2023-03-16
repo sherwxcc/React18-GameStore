@@ -8,9 +8,9 @@ import { Typography } from "@mui/material/index";
 const ContainedButton = styled(Button).attrs(() => ({
   variant: "gradient",
 }))`
-  background: ${(props) => props.theme.palette.gradient};
+  background: ${(props) => props.theme.palette.gradientLight};
   &:hover: {
-    background: ${(props) => props.theme.palette.reverseGradient};
+    background: ${(props) => props.theme.palette.gradientDim};
   }
 `;
 

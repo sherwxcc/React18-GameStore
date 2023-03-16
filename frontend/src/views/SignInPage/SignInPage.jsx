@@ -11,6 +11,7 @@ const GradientBox = styled(Box).attrs(() => ({
 `;
 
 function SignInPage({ theme }) {
+  
   return (
     <>
       <GradientBox variant="gradient" theme={theme}>

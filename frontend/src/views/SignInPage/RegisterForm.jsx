@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import AccountContext from "contexts/AccountContext";
+import MessageContext from "contexts/MessageContext";
+
 import useVisibility from "hooks/useVisibility";
 import useValidation from "hooks/useValidation";
 
 import CustomButton from "components/customUI/CustomButton";
 import CustomCard from "components/customUI/CustomCard";
 import CustomFormHelperText from "components/customUI/CustomFormHelperText";
+
+import MESSAGE_CODE from "data/messageCode";
 
 import {
   FormControl,
@@ -21,6 +25,8 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 function RegisterForm() {
   const { handleRegister } = useContext(AccountContext);
+  const { messageHandler } = useContext(MessageContext);
+
   const [isVisible, handleVisibility] = useVisibility();
   const [
     inputValue,
@@ -30,22 +36,41 @@ function RegisterForm() {
     usernameCheck,
     nameCheck,
     passwordCheck,
+    resetInputValue,
+    resetInputMsg,
   ] = useValidation();
 
-  const registerHandler = () => {
+  const registerHandler = async () => {
     // Check if all the values are true
     if (Object.values(inputValue).every(Boolean)) {
-      return handleRegister({
+      let res = await handleRegister({
         firstname: inputValue.firstname,
         lastname: inputValue.lastname,
         username: inputValue.username,
         password: inputValue.password,
       });
+      if (res.code === 10003) {
+        return setInputMsg({
+          ...inputMsg,
+          username: {
+            status: MESSAGE_CODE[res.code].type,
+            msg: MESSAGE_CODE[res.code].message,
+          },
+        });
+      }
+      if (res.code === 20001) {
+        messageHandler(
+          MESSAGE_CODE[res.code].type,
+          MESSAGE_CODE[res.code].message
+        );
+        resetInputValue();
+        resetInputMsg();
+      }
     }
 
     for (let field in inputValue) {
       if (!inputValue[field]) {
-        setInputMsg({
+        await setInputMsg({
           ...inputMsg,
           [field]: { status: "error", msg: "This field is required" },
         });

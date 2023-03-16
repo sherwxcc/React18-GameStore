@@ -12,6 +12,7 @@ import reportWebVitals from "reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AccountProvider } from "contexts/AccountContext";
 import { ColorProvider } from "contexts/ColorContext";
+import { MessageProvider } from "contexts/MessageContext";
 import App from "App.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,9 +20,11 @@ root.render(
   <React.StrictMode>
     <ColorProvider>
       <AccountProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <MessageProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </MessageProvider>
       </AccountProvider>
     </ColorProvider>
   </React.StrictMode>

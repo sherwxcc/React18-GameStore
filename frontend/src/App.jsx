@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 import ErrorPage from "views/ErrorPage/ErrorPage";
 import LandingPage from "views/LandingPage/LandingPage";
@@ -11,13 +12,14 @@ import { Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
-// import AccountContext from "contexts/AccountContext";
+import AccountContext from "contexts/AccountContext";
 import ColorContext from "contexts/ColorContext";
 import Navbar from "components/Navbar/Navbar";
 import CustomMessage from "components/customUI/CustomMessage";
 import "App.scss";
 
 const App = () => {
+  const { isLoggedIn } = useContext(AccountContext);
   const { theme } = useContext(ColorContext);
 
   return (
@@ -26,7 +28,7 @@ const App = () => {
         <CssBaseline />
         <div id="app">
           <Navbar />
-          <CustomMessage />
+          <CustomMessage theme={theme} />
           <Routes>
             <Route index element={<LandingPage />} />
             <Route
@@ -34,7 +36,16 @@ const App = () => {
               element={<ProductListPage theme={theme} />}
             />
             <Route path="/policy" element={<PolicyPage theme={theme} />} />
-            <Route path="/signin" element={<SignInPage theme={theme} />} />
+            <Route
+              path="/signin"
+              element={
+                isLoggedIn ? (
+                  <Navigate to="/" replace={true} />
+                ) : (
+                  <SignInPage theme={theme} />
+                )
+              }
+            />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>

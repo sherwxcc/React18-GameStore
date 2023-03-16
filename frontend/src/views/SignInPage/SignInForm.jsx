@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AccountContext from "contexts/AccountContext";
+import MessageContext from "contexts/MessageContext";
 import useValidation from "hooks/useValidation";
 import useVisibility from "hooks/useVisibility";
+import MESSAGE_CODE from "data/messageCode";
 
 import {
   CustomButton,
@@ -22,33 +24,53 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 function SignInForm() {
   const { handleLogIn } = useContext(AccountContext);
+  const { messageHandler } = useContext(MessageContext);
 
-  const [inputValue, inputMsg, setInputValue, setInputMsg] = useValidation();
+  const [
+    inputValue,
+    inputMsg,
+    setInputValue,
+    setInputMsg,
+    resetInputValue,
+    resetInputMsg,
+  ] = useValidation();
   const [isVisible, handleVisibility] = useVisibility();
 
-  const loginHandler = () => {
+  const [failMessage, setFailMessage] = useState("");
+
+  const loginHandler = async () => {
     if (inputValue.username && inputValue.password) {
-      return handleLogIn({
+      let res = await handleLogIn({
         username: inputValue.username,
         password: inputValue.password,
       });
+      if (res.code === 20000) {
+        console.log("HANDLER SUCCESS");
+        setFailMessage("");
+        messageHandler(
+          MESSAGE_CODE[res.code].type,
+          MESSAGE_CODE[res.code].message
+        );
+        resetInputValue();
+        resetInputMsg();
+        return;
+      }
+      console.log("LOGIN FAILED");
+      setFailMessage(MESSAGE_CODE[res.code].message);
+      return;
     }
 
     if (!inputValue.username) {
-      setInputMsg(
-        setInputMsg({
-          ...inputMsg,
-          username: { status: "error", msg: "This field is required" },
-        })
-      );
+      setInputMsg({
+        ...inputMsg,
+        username: { status: "error", msg: "This field is required" },
+      });
     }
     if (!inputValue.password) {
-      setInputMsg(
-        setInputMsg({
-          ...inputMsg,
-          password: { status: "error", msg: "This field is required" },
-        })
-      );
+      setInputMsg({
+        ...inputMsg,
+        password: { status: "error", msg: "This field is required" },
+      });
     }
   };
 
@@ -166,6 +188,20 @@ function SignInForm() {
             Forget Password?
           </Typography>
         </Box>
+
+        {failMessage && (
+          <Typography
+            variant="caption"
+            color="error"
+            sx={{
+              display: "block",
+              float: "right",
+              mt: "1rem",
+            }}
+          >
+            {failMessage}
+          </Typography>
+        )}
 
         <CustomButton
           variant="contained"
