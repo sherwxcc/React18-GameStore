@@ -40,9 +40,9 @@ const globalStyle = {
       fontWeight: 700,
     },
     body1: {
-      fontSize: "1rem",
+      fontSize: "1.3rem",
       fontFamily: "Source Sans Pro",
-      fontWeight: 500,
+      fontWeight: 700,
     },
     body2: {
       fontSize: "0.9rem",
@@ -120,20 +120,10 @@ const globalStyle = {
         },
       },
     },
-    MuiMenuItem: {
+    MuiGrid: {
       styleOverrides: {
         root: {
-          borderRadius: "5px",
-          "&:hover": {
-            backgroundColor: "unset",
-          },
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          borderRadius: "10px",
+          marginTop: "0px",
         },
       },
     },
@@ -154,6 +144,23 @@ const globalStyle = {
           height: "2.5rem",
           fontSize: "0.9rem",
           fontWeight: "700",
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          borderRadius: "5px",
+          "&:hover": {
+            backgroundColor: "unset",
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: "10px",
         },
       },
     },

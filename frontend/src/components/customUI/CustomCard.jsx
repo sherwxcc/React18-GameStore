@@ -11,12 +11,11 @@ export const FormCard = styled(Card).attrs(() => ({
   max-width: 450px;
 `;
 
+// background: ${(props) => props.theme.palette.gradientDim};
 export const ProductCard = styled(Card).attrs(() => ({
   variant: "product",
 }))`
-  padding: 1rem;
-  margin: 1rem;
-  min-width: 300px;
-  width: 300px;
   border-radius: 5px !important;
+  box-shadow: 0 0 25px rgb(0 0 0 / 10%);
+  background: ${(props) => props.theme.palette.gradient};
 `;

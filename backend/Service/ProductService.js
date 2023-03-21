@@ -6,10 +6,8 @@ class ProductService {
   async getProductList() {
     let list = await this.knex("tblProducts");
 
-    console.log("Matched: ", matchedUser);
-
     if (list) {
-      return { code: 20000, list }; // User already exit
+      return { code: 20000, list }; // Matched product
     } else {
       return { code: 10005, message: "No matching item" };
     }

@@ -14,6 +14,7 @@ import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
 import AccountContext from "contexts/AccountContext";
 import ColorContext from "contexts/ColorContext";
+
 import Navbar from "components/Navbar/Navbar";
 import CustomMessage from "components/customUI/CustomMessage";
 import "App.scss";

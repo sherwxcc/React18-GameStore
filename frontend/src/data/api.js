@@ -7,6 +7,7 @@ const API = {
   // Cart Routes
   // Order Routes
   // Product Routes
+  getProductList: { url: "/product/list", method: "GET" },
 };
 
 export default API;
