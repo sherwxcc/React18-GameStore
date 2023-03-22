@@ -9,6 +9,7 @@ const lightPalette = {
   linearGradient: `linear-gradient(236deg, rgba(157,191,158,0.3) 33%, rgba(200,140,207,0.3) 100%);`,
   linearGradientLight: `linear-gradient(236deg, rgba(157,191,158,0.4) 33%, rgba(200,140,207,0.4) 100%);`,
   linearGradientDim: `linear-gradient(236deg, rgba(157,191,158,0.2) 33%, rgba(200,140,207,0.2) 100%);`,
+  linearGradientSolid: `linear-gradient(236deg, rgba(157,191,158,0.8) 33%, rgba(200,140,207,0.8) 100%);`,
 };
 
 const light = createTheme({
@@ -35,6 +36,7 @@ const light = createTheme({
     gradient: lightPalette.linearGradient,
     gradientLight: lightPalette.linearGradientLight,
     gradientDim: lightPalette.linearGradientDim,
+    gradientSolid: lightPalette.linearGradientSolid,
     contrastThreshold: 4.5, // WCAG 2.1 Rule 1.4.3: Min. contrast = 4.5:1
     tonalOffset: 0.2,
   },

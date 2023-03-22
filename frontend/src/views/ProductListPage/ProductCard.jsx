@@ -1,7 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import ColorContext from "contexts/ColorContext";
-
 import { CustomProductCard } from "components/customUI/index";
 import {
   Box,
@@ -10,13 +9,21 @@ import {
   Stack,
   Typography,
 } from "@mui/material/index";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 const ProductCard = ({ el }) => {
   const { theme } = useContext(ColorContext);
 
   return (
     <>
-      <CustomProductCard key={el.prod_id} theme={theme}>
+      <CustomProductCard
+        key={el.prod_id}
+        theme={theme}
+        sx={{ position: "relative" }}
+        className="card-base"
+      >
         <CardMedia
           component="img"
           image={`/static/images/products/${el.img_url}.png`}
@@ -32,22 +39,34 @@ const ProductCard = ({ el }) => {
           }}
         ></CardMedia>
         <Box sx={{ padding: "0 1rem 1rem 1rem" }}>
-          <Box sx={{ height: "max-content", minHeight: "4rem" }}>
-            <Typography
-              variant="body1"
-              color="text.primary"
-              sx={{
-                marginTop: "1rem",
-                marginBottom: "1rem",
-                lineHeight: "1.3rem",
-                width: "20ch",
-                cursor: "pointer",
-                "&:hover": { color: theme.palette.contrast },
-              }}
-            >
-              {el.prod_name}
-            </Typography>
-          </Box>
+          <Stack direction="row" justifyContent="space-between">
+            <Box sx={{ height: "max-content", minHeight: "5rem" }}>
+              <Typography
+                variant="body1"
+                color="text.primary"
+                sx={{
+                  marginTop: "1rem",
+                  marginBottom: "1rem",
+                  lineHeight: "1.3rem",
+                  width: "20ch",
+                  cursor: "pointer",
+                  "&:hover": { color: theme.palette.contrast },
+                }}
+              >
+                {el.prod_name}
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex" }}>
+              <FavoriteBorderIcon
+                sx={{
+                  fontSize: "1.1em",
+                  cursor: "pointer",
+                  margin: "16px 0",
+                  "&:hover": { color: theme.palette.contrast },
+                }}
+              />
+            </Box>
+          </Stack>
           <Divider
             variant="middle"
             sx={{ marginRight: "0", marginLeft: "0" }}
@@ -61,7 +80,7 @@ const ProductCard = ({ el }) => {
               Price:
             </Typography>
             <Typography variant="subtitle2" color="text.primary">
-              ${el.price}
+              {"HKD " + el.price}
             </Typography>
           </Stack>
         </Box>
