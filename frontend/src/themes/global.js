@@ -66,10 +66,11 @@ const globalStyle = {
   spacing: 8,
   breakpoints: {
     values: {
-      mobile: 0,
-      tablet: 640,
-      laptop: 1024,
-      desktop: 1200,
+      xs: 0,
+      sm: 640,
+      md: 1024,
+      lg: 1200,
+      xl: 1600,
     },
   },
   transitions: {
@@ -117,13 +118,6 @@ const globalStyle = {
       styleOverrides: {
         root: {
           fontSize: "1rem",
-        },
-      },
-    },
-    MuiGrid: {
-      styleOverrides: {
-        root: {
-          marginTop: "0px",
         },
       },
     },

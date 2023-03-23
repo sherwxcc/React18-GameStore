@@ -2,13 +2,17 @@ import { useContext } from "react";
 // import MenuIcon from "@mui/icons-material/Menu";
 import GamerStopLogo from "assets/icons/GamerStopLogo.png";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LanguageIcon from "@mui/icons-material/Language";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { AppBar, Box, SvgIcon, Toolbar, Typography } from "@mui/material/index";
+import { CustomBadge } from "components/customUI/index";
 import styled from "styled-components";
 import AccountContext from "contexts/AccountContext";
 import ColorContext from "contexts/ColorContext";
+
 import { Link } from "react-router-dom";
-import { leftNavbarItems, rightNavbarItems } from "./constants/navbarListItems";
+import { leftNavbarItems } from "./constants/navbarListItems";
 
 const MenuTypography = styled(Typography).attrs(() => ({
   vairant: "subtitle1",
@@ -86,11 +90,19 @@ const Navbar = () => {
             </FlexBox>
 
             <FlexBox>
-              {rightNavbarItems.map((el) => (
-                <StyledIconBox key={el.id} theme={theme}>
-                  <SvgIcon color="svgPrimary">{el.icon}</SvgIcon>
+              <StyledIconBox theme={theme}>
+                <SvgIcon color="svgPrimary">
+                  <LanguageIcon></LanguageIcon>
+                </SvgIcon>
+              </StyledIconBox>
+
+              <CustomBadge>
+                <StyledIconBox theme={theme}>
+                  <SvgIcon color="svgPrimary">
+                    <ShoppingCartIcon></ShoppingCartIcon>
+                  </SvgIcon>
                 </StyledIconBox>
-              ))}
+              </CustomBadge>
 
               <StyledIconBox theme={theme} onClick={() => toggleMode()}>
                 <SvgIcon color="svgPrimary">

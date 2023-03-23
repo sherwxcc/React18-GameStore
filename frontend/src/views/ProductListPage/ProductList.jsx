@@ -15,11 +15,11 @@ const ProductList = () => {
           justifyContent="flex-start"
           alignItems="stretch"
           columns={12}
-          spacing={3}
-          sx={{ width: "auto", margin: "auto" }}
+          spacing={{ xs: 2, md: 3 }}
+          sx={{ width: "auto", margin: "auto", padding: "2rem" }}
         >
           {productList?.map((el, i) => (
-            <Grid item xs={6} sm={6} md={4} lg={3} xl={2} key={el.prod_id}>
+            <Grid item xs={6} sm={4} md={3} lg={3} xl={2} key={el.prod_id}>
               <ProductCard el={el} />
             </Grid>
           ))}

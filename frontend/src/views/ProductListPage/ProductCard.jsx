@@ -11,26 +11,20 @@ import {
 } from "@mui/material/index";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 const ProductCard = ({ el }) => {
   const { theme } = useContext(ColorContext);
 
   return (
     <>
-      <CustomProductCard
-        key={el.prod_id}
-        theme={theme}
-        sx={{ position: "relative" }}
-        className="card-base"
-      >
+      <CustomProductCard key={el.prod_id} theme={theme} className="card-base">
         <CardMedia
           component="img"
           image={`/static/images/products/${el.img_url}.png`}
           alt={el.prod_name}
           sx={{
-            maxHeight: "200px",
             maxWidth: "100%",
+            maxHeight: "150px",
             height: "100%",
             width: "100%",
             borderRadius: "2px",
@@ -40,16 +34,17 @@ const ProductCard = ({ el }) => {
         ></CardMedia>
         <Box sx={{ padding: "0 1rem 1rem 1rem" }}>
           <Stack direction="row" justifyContent="space-between">
-            <Box sx={{ height: "max-content", minHeight: "5rem" }}>
+            <Box sx={{ height: "max-content", height: "3em" }}>
               <Typography
-                variant="body1"
+                variant="subtitle2"
                 color="text.primary"
                 sx={{
                   marginTop: "1rem",
                   marginBottom: "1rem",
-                  lineHeight: "1.3rem",
-                  width: "20ch",
+                  maxWidth: "15ch",
+                  lineHeight: "1rem",
                   cursor: "pointer",
+                  overflow: "hidden",
                   "&:hover": { color: theme.palette.contrast },
                 }}
               >
@@ -57,7 +52,7 @@ const ProductCard = ({ el }) => {
               </Typography>
             </Box>
             <Box sx={{ display: "flex" }}>
-              <FavoriteBorderIcon
+              <AddShoppingCartIcon
                 sx={{
                   fontSize: "1.1em",
                   cursor: "pointer",
