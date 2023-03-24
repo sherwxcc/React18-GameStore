@@ -1,9 +1,7 @@
 import { useContext } from "react";
-import ProductContext from "contexts/ProductContext";
+import ProductListContext from "contexts/ProductListContext";
 
 const ListParams = () => {
-  
-
   return (
     <>
       <div>Params controller</div>

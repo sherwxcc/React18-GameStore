@@ -45,7 +45,6 @@ export function AccountProvider({ children }) {
   };
 
   const handleLogOut = () => {
-    console.log("LOGOUT");
     localStorage.removeItem("gspUser");
     setUser({ token: "", userId: null, username: "" });
     setIsLoggedIn(false);

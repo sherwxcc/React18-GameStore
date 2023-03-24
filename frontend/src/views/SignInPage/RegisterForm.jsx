@@ -1,18 +1,10 @@
 import { useContext } from "react";
-import AccountContext from "contexts/AccountContext";
-import MessageContext from "contexts/MessageContext";
-
+// Contexts
+import { AccountContext, MessageContext } from "contexts/index";
+// Hooks
 import useVisibility from "hooks/useVisibility";
 import useValidation from "hooks/useValidation";
-
-import {
-  CustomButton,
-  CustomFormHelperText,
-  CustomFormCard,
-} from "components/customUI/index";
-
-import MESSAGE_CODE from "data/messageCode";
-
+// MUI
 import {
   FormControl,
   Input,
@@ -24,6 +16,14 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
+// Custom components
+import {
+  CustomButton,
+  CustomFormHelperText,
+  CustomFormCard,
+} from "components/customUI/index";
+// Constants
+import MESSAGE_CODE from "data/messageCode";
 
 function RegisterForm() {
   const { handleRegister } = useContext(AccountContext);

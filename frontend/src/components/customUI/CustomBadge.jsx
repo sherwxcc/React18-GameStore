@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ColorContext from "contexts/ColorContext";
 
 import BadgeUnstyled, { badgeUnstyledClasses } from "@mui/base/BadgeUnstyled";
@@ -8,10 +8,8 @@ const StyledBadge = styled(BadgeUnstyled)`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 14px;
   font-variant: tabular-nums;
   list-style: none;
-  font-family: IBM Plex Sans, sans-serif;
   position: relative;
   display: inline-block;
   line-height: 1;

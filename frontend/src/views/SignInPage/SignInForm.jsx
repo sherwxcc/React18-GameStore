@@ -1,15 +1,10 @@
 import { useContext, useState } from "react";
-import AccountContext from "contexts/AccountContext";
-import MessageContext from "contexts/MessageContext";
+// Contexts
+import { AccountContext, MessageContext } from "contexts/index";
+// Hooks
 import useValidation from "hooks/useValidation";
 import useVisibility from "hooks/useVisibility";
-import MESSAGE_CODE from "data/messageCode";
-
-import {
-  CustomButton,
-  CustomFormCard,
-  CustomFormHelperText,
-} from "components/customUI/index";
+// MUI
 import {
   Box,
   FormControl,
@@ -21,6 +16,14 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
+// Custom components
+import {
+  CustomButton,
+  CustomFormCard,
+  CustomFormHelperText,
+} from "components/customUI/index";
+// Constants
+import MESSAGE_CODE from "data/messageCode";
 
 function SignInForm() {
   const { handleLogIn } = useContext(AccountContext);
@@ -35,7 +38,6 @@ function SignInForm() {
     resetInputMsg,
   ] = useValidation();
   const [isVisible, handleVisibility] = useVisibility();
-
   const [failMessage, setFailMessage] = useState("");
 
   const loginHandler = async () => {

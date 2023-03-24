@@ -1,13 +1,15 @@
-import { ProductProvider } from "contexts/ProductContext";
+// Contexts
+import { ProductListProvider } from "contexts/ProductListContext";
+// Components
 import ProductList from "./ProductList";
 
 function ProductListPage() {
   return (
     <>
       <div>List</div>
-      <ProductProvider>
+      <ProductListProvider>
         <ProductList />
-      </ProductProvider>
+      </ProductListProvider>
     </>
   );
 }

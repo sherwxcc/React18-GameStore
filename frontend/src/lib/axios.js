@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 export const apiRequest = async ({
   url,
   method,
-  params = {},
+  params = {}, // query params
   data = {},
   token = null,
 }) => {

@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
-
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+// Contexts
 import ColorContext from "contexts/ColorContext";
-import { CustomProductCard } from "components/customUI/index";
+// MUI
 import {
   Box,
   CardMedia,
@@ -11,6 +12,10 @@ import {
 } from "@mui/material/index";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// Custom components
+import { CustomProductCard } from "components/customUI/index";
+// Utils
+import { formatPrice } from "utils/format";
 
 const ProductCard = ({ el }) => {
   const { theme } = useContext(ColorContext);
@@ -35,21 +40,23 @@ const ProductCard = ({ el }) => {
         <Box sx={{ padding: "0 1rem 1rem 1rem" }}>
           <Stack direction="row" justifyContent="space-between">
             <Box sx={{ height: "max-content", height: "3em" }}>
-              <Typography
-                variant="subtitle2"
-                color="text.primary"
-                sx={{
-                  marginTop: "1rem",
-                  marginBottom: "1rem",
-                  maxWidth: "15ch",
-                  lineHeight: "1rem",
-                  cursor: "pointer",
-                  overflow: "hidden",
-                  "&:hover": { color: theme.palette.contrast },
-                }}
-              >
-                {el.prod_name}
-              </Typography>
+              <Link to={`/product/detail/${el.prod_id}`}>
+                <Typography
+                  variant="subtitle2"
+                  color="text.primary"
+                  sx={{
+                    marginTop: "1rem",
+                    marginBottom: "1rem",
+                    maxWidth: "20ch",
+                    lineHeight: "1rem",
+                    cursor: "pointer",
+                    overflow: "hidden",
+                    "&:hover": { color: theme.palette.contrast },
+                  }}
+                >
+                  {el.prod_name}
+                </Typography>
+              </Link>
             </Box>
             <Box sx={{ display: "flex" }}>
               <AddShoppingCartIcon
@@ -75,7 +82,7 @@ const ProductCard = ({ el }) => {
               Price:
             </Typography>
             <Typography variant="subtitle2" color="text.primary">
-              {"HKD " + el.price}
+              {"HKD " + formatPrice(el.price)}
             </Typography>
           </Stack>
         </Box>
