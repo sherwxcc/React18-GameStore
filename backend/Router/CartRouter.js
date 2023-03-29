@@ -7,7 +7,78 @@ class CartRouter {
 
   router() {
     let router = express.Router();
+    router.get("/all/:userId", this.getCartAll.bind(this));
+    router.post("/add", this.postSingleItem.bind(this));
+    router.put("/update/:prodId", this.putSingleItem.bind(this));
+    router.delete("/del/:prodId", this.deleteCartItem.bind(this));
+    router.delete("/del/all/:userId", this.deleteCartAll.bind(this));
     return router;
+  }
+
+  async getCartAll(req, res, next) {
+    try {
+      let result = await this.cartService.selectCartAll(req.params.userId);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+      throw new Error(error);
+    }
+  }
+
+  async postSingleItem(req, res, next) {
+    try {
+      await this.cartService.insertCartItem(req.body.userId, req.body.prodId);
+      let result = await this.cartService.selectCartAll(req.body.userId);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+      throw new Error(error);
+    }
+  }
+
+  async putSingleItem(req, res, next) {
+    try {
+      await this.cartService.updateCartItem(
+        req.body.userId,
+        req.body.prodId,
+        req.body.quantity
+      );
+      let result = await this.cartService.selectCartAll(req.body.userId);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+      throw new Error(error);
+    }
+  }
+
+  async deleteCartItem(req, res, next) {
+    try {
+      await this.cartService.deleteSingleItem(
+        req.params.userId,
+        req.params.prodId
+      );
+      let result = await this.cartService.selectCartAll(req.params.userId);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+      throw new Error(error);
+    }
+  }
+
+  async deleteCartAll(req, res, next) {
+    try {
+      await this.cartService.deleteCartAll(req.params.userId);
+      let result = await this.cartService.selectCartAll(req.params.userId);
+
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+      throw new Error(error);
+    }
   }
 }
 
