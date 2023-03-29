@@ -9,6 +9,7 @@ import { AppBar, Box, SvgIcon, Toolbar, Typography } from "@mui/material/index";
 import { CustomBadge } from "components/customUI/index";
 import styled from "styled-components";
 import AccountContext from "contexts/AccountContext";
+import CartContext from "contexts/CartContext";
 import ColorContext from "contexts/ColorContext";
 
 import { Link } from "react-router-dom";
@@ -50,6 +51,7 @@ const StyledIconBox = styled(FlexBox)`
 `;
 
 const Navbar = () => {
+  const { cartLength, handleClearCart } = useContext(CartContext);
   const { theme, mode, toggleMode } = useContext(ColorContext);
   const { isLoggedIn, user, handleLogOut } = useContext(AccountContext);
 
@@ -96,13 +98,17 @@ const Navbar = () => {
                 </SvgIcon>
               </StyledIconBox>
 
-              <CustomBadge>
-                <StyledIconBox theme={theme}>
-                  <SvgIcon color="svgPrimary">
-                    <ShoppingCartIcon></ShoppingCartIcon>
-                  </SvgIcon>
-                </StyledIconBox>
-              </CustomBadge>
+              {isLoggedIn && (
+                <Link to="/mycart">
+                  <CustomBadge count={cartLength}>
+                    <StyledIconBox theme={theme}>
+                      <SvgIcon color="svgPrimary">
+                        <ShoppingCartIcon></ShoppingCartIcon>
+                      </SvgIcon>
+                    </StyledIconBox>
+                  </CustomBadge>
+                </Link>
+              )}
 
               <StyledIconBox theme={theme} onClick={() => toggleMode()}>
                 <SvgIcon color="svgPrimary">
@@ -116,7 +122,10 @@ const Navbar = () => {
                   color="text.primary"
                   theme={theme}
                   sx={{ minWidth: "100px", textAlign: "center" }}
-                  onClick={() => handleLogOut()}
+                  onClick={() => {
+                    handleClearCart();
+                    handleLogOut();
+                  }}
                 >
                   {user?.username || "LOG OUT"}
                 </SignInTypography>

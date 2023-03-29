@@ -4,6 +4,7 @@ import { Navigate, Routes, Route } from "react-router-dom";
 import { AccountContext, ColorContext } from "contexts/index";
 // Views
 import {
+  CartPage,
   ErrorPage,
   LandingPage,
   SignInPage,
@@ -33,6 +34,7 @@ const App = () => {
           <CustomMessage theme={theme} />
           <Routes>
             <Route index element={<LandingPage />} />
+            <Route path="mycart" element={<CartPage />} />
             <Route path="product" element={<ProductListPage />} />
             <Route
               path="product/detail/:prodId"

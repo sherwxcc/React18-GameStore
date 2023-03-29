@@ -1,16 +1,19 @@
-import { createContext, useEffect, useState } from "react";
-import { apiRequest } from "lib/axios";
-import API from "data/api";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getLocalUser, clearLocalUser } from "utils/localStorage";
+import { login, register } from "services/authService";
+import CartContext from "./CartContext";
 
 const AccountContext = createContext();
 
 export function AccountProvider({ children }) {
+  const { handleGetCart, handleClearCart } = useContext(CartContext);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({ token: "", userId: null, username: "" });
 
   // Check if user is present in local storage
   useEffect(() => {
-    let localUser = JSON.parse(localStorage.getItem("gspUser"));
+    let localUser = getLocalUser();
     if (localUser) {
       setUser({
         token: localUser.token,
@@ -22,14 +25,7 @@ export function AccountProvider({ children }) {
   }, []);
 
   const handleLogIn = async (data) => {
-    let req = {
-      url: API.logIn.url,
-      method: API.logIn.method,
-      params: {},
-      data,
-      token: null,
-    };
-    let res = await apiRequest(req);
+    let res = await login(data);
     if (res.data.code === 20000) {
       let user = {
         token: res.data.token,
@@ -39,27 +35,21 @@ export function AccountProvider({ children }) {
       localStorage.setItem("gspUser", JSON.stringify(user));
       setUser(user);
       setIsLoggedIn(true);
+      handleGetCart(res.data.userId);
     }
 
     return res.data;
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem("gspUser");
+    clearLocalUser();
     setUser({ token: "", userId: null, username: "" });
     setIsLoggedIn(false);
+    handleClearCart();
   };
 
   const handleRegister = async (data) => {
-    let req = {
-      url: API.register.url,
-      method: API.register.method,
-      params: {},
-      data,
-      token: null,
-    };
-    let res = await apiRequest(req);
-
+    let res = await register(data);
     return res.data;
   };
 

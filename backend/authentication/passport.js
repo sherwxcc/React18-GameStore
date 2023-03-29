@@ -12,9 +12,7 @@ module.exports = (knex) => {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     },
     async (payload, done) => {
-      let matchedUser = await knex("tblUsers").where({
-        user_id: payload.userId,
-      });
+      let matchedUser = await knex("tblUsers").where("user_id", payload.id);
 
       if (matchedUser.length) {
         return done(null, { userId: matchedUser[0].user_id });

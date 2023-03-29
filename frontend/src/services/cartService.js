@@ -9,9 +9,8 @@ import { apiRequest } from "lib/axios";
 export const getCartList = async (userId) => {
   try {
     let res = await apiRequest({
-      url: API.getProdList.url,
-      method: API.getProdList.method,
-      params: { userId },
+      url: `${API.getCartList.url}/${userId}`,
+      method: API.getCartList.method,
     });
     return res.data.list;
   } catch (error) {
@@ -84,7 +83,7 @@ export const deleteCartItem = async (userId, prodId) => {
  * @param {number} userId - the cart's userId
  * @returns the empty cart
  */
-export const clearCart = async (userId) => {
+export const deleteCartAll = async (userId) => {
   try {
     let res = await apiRequest({
       url: API.clearCart.url,

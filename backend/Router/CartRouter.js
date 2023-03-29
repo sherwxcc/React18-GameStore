@@ -28,9 +28,21 @@ class CartRouter {
 
   async postSingleItem(req, res, next) {
     try {
-      await this.cartService.insertCartItem(req.body.userId, req.body.prodId);
+      let cartProdQty = await this.cartService.checkCartItem(
+        req.body.userId,
+        req.body.prodId
+      );
+      if (cartProdQty) {
+        cartProdQty++;
+        await this.cartService.updateCartItem(
+          req.body.userId,
+          req.body.prodId,
+          cartProdQty
+        );
+      } else {
+        await this.cartService.insertCartItem(req.body.userId, req.body.prodId);
+      }
       let result = await this.cartService.selectCartAll(req.body.userId);
-
       return res.status(200).json(result);
     } catch (error) {
       next(error);

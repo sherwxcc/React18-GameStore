@@ -11,6 +11,7 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { AccountProvider } from "contexts/AccountContext";
+import { CartProvider } from "contexts/CartContext";
 import { ColorProvider } from "contexts/ColorContext";
 import { MessageProvider } from "contexts/MessageContext";
 import App from "App.jsx";
@@ -19,13 +20,15 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ColorProvider>
-      <AccountProvider>
-        <MessageProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </MessageProvider>
-      </AccountProvider>
+      <CartProvider>
+        <AccountProvider>
+          <MessageProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </MessageProvider>
+        </AccountProvider>
+      </CartProvider>
     </ColorProvider>
   </React.StrictMode>
 );

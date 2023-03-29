@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 // Contexts
-import ColorContext from "contexts/ColorContext";
+import { CartContext, ColorContext } from "contexts/index";
 // MUI
 import {
   Box,
@@ -11,7 +11,6 @@ import {
   Typography,
 } from "@mui/material/index";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 // Custom components
 import { CustomProductCard } from "components/customUI/index";
 // Utils
@@ -19,6 +18,7 @@ import { formatPrice } from "utils/format";
 
 const ProductCard = ({ el }) => {
   const { theme } = useContext(ColorContext);
+  const { handleAddCart } = useContext(CartContext);
 
   return (
     <>
@@ -39,7 +39,7 @@ const ProductCard = ({ el }) => {
         ></CardMedia>
         <Box sx={{ padding: "0 1rem 1rem 1rem" }}>
           <Stack direction="row" justifyContent="space-between">
-            <Box sx={{ height: "max-content", height: "3em" }}>
+            <Box sx={{ height: "3em" }}>
               <Link to={`/product/detail/${el.prod_id}`}>
                 <Typography
                   variant="subtitle2"
@@ -58,7 +58,10 @@ const ProductCard = ({ el }) => {
                 </Typography>
               </Link>
             </Box>
-            <Box sx={{ display: "flex" }}>
+            <Box
+              sx={{ display: "flex" }}
+              onClick={() => handleAddCart(el.prod_id)}
+            >
               <AddShoppingCartIcon
                 sx={{
                   fontSize: "1.1em",

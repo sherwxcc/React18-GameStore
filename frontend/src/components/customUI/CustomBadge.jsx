@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ColorContext from "contexts/ColorContext";
 
 import BadgeUnstyled, { badgeUnstyledClasses } from "@mui/base/BadgeUnstyled";
@@ -35,12 +35,12 @@ const StyledBadge = styled(BadgeUnstyled)`
   }
 `;
 
-function CustomBadge({ children }) {
+function CustomBadge({ children, count }) {
   const { theme } = useContext(ColorContext);
 
   return (
     <>
-      <StyledBadge theme={theme} badgeContent={5}>
+      <StyledBadge theme={theme} badgeContent={count}>
         {children}
       </StyledBadge>
     </>
