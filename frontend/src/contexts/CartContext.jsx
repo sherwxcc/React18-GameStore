@@ -24,7 +24,11 @@ export function CartProvider({ children }) {
   }, []);
 
   const cartLength = useMemo(() => {
-    return cart?.length;
+    return cart?.length.toString();
+  }, [cart]);
+
+  const cartTotalPrice = useMemo(() => {
+    return cart?.map((el) => el.price).reduce((accu, curr) => accu + curr, 0);
   }, [cart]);
 
   const handleGetCart = async (userId) => {
@@ -39,6 +43,11 @@ export function CartProvider({ children }) {
     setCart(list);
   };
 
+  /**
+   * Update cart handler
+   * @param {number} prodId
+   * @param {number} quantity
+   */
   const handleUpdateCart = async (prodId, quantity) => {
     let userId = getLocalUserId();
     let list = await updateCartItem(userId, prodId, quantity);
@@ -66,6 +75,7 @@ export function CartProvider({ children }) {
       value={{
         cart,
         cartLength,
+        cartTotalPrice,
         handleAddCart,
         handleClearCart,
         handleDeleteCart,

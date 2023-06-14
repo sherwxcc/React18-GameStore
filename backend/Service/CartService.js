@@ -60,7 +60,6 @@ class CartService {
 
   // NOTE: User update product qty
   async updateCartItem(userId, prodId, quantity) {
-    console.log("NEW QTY: ", quantity);
     try {
       await this.knex("tblCartDetails")
         .where("user_id", userId)

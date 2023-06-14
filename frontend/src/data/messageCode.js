@@ -21,7 +21,7 @@ const MESSAGE_CODE = {
   10003: { type: "error", message: "Username already taken", noticeLv: 1 },
   // Success codes
   20000: { type: "success", message: "Login success", noticeLv: 0 },
-  20001: { type: "success", message: "Accout created", noticeLv: 0 },
+  20001: { type: "success", message: "Account created", noticeLv: 0 },
 };
 
 export default MESSAGE_CODE;

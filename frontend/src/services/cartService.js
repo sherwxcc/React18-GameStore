@@ -70,7 +70,8 @@ export const deleteCartItem = async (userId, prodId) => {
     let res = await apiRequest({
       url: API.deleteCartItem.url,
       method: API.deleteCartItem.method,
-      params: { userId, prodId },
+      params: {},
+      data: { userId, prodId },
     });
     return res.data.list;
   } catch (error) {

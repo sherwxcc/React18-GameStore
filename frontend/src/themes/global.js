@@ -29,6 +29,13 @@ const globalStyle = {
       fontFamily: "Rubik",
       fontWeight: 700,
     },
+    h4: {
+      fontSize: "1.7rem",
+      // fontFamily: "Cooper Hewitt",
+      fontFamily: "Rubik",
+      fontWeight: 700,
+      marginBottom: "2rem",
+    },
     subtitle1: {
       fontSize: "0.9rem",
       fontFamily: "Source Sans Pro",
@@ -155,6 +162,8 @@ const globalStyle = {
       styleOverrides: {
         root: {
           borderRadius: "10px",
+          marginRight: "auto",
+          marginLeft: "auto",
         },
       },
     },

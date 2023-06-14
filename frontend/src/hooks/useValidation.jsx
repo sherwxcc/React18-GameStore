@@ -32,7 +32,6 @@ const useValidation = () => {
   };
 
   const usernameCheck = () => {
-    console.log("NEW USERNAME? ", inputValue.username);
     checkAlphanum(inputValue.username.trim())
       ? setInputMsg({
           ...inputMsg,

@@ -1,7 +1,10 @@
+// MUI
+import { Typography } from "@mui/material/index";
+
 function LandingPage() {
   return (
     <>
-      <div>Landing</div>
+      <Typography variant="h4">Landing</Typography>
     </>
   );
 }

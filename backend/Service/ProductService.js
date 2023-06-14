@@ -18,7 +18,6 @@ class ProductService {
       .join("tblCategories", "tblProducts.cat_id", "tblCategories.cat_id")
       .where("prod_id", prodId);
     if (detail[0]) {
-      console.log("DETAIL: ", detail);
       return { code: 20000, detail: detail[0] }; // Product detail
     } else {
       return { code: 10006, message: "Item not found" };

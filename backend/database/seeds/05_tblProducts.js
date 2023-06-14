@@ -45,5 +45,21 @@ exports.seed = async function (knex) {
       cat_id: 2,
       status_id: 2,
     },
+    {
+      prod_name: "Zelda: BOTW",
+      img_url: "zeldaBotw",
+      price: 450,
+      brand_id: 2,
+      cat_id: 2,
+      status_id: 2,
+    },
+    {
+      prod_name: "Zelda: TOTK",
+      img_url: "zeldaTotk",
+      price: 500,
+      brand_id: 2,
+      cat_id: 2,
+      status_id: 2,
+    },
   ]);
 };

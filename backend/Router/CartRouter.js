@@ -9,8 +9,8 @@ class CartRouter {
     let router = express.Router();
     router.get("/all/:userId", this.getCartAll.bind(this));
     router.post("/add", this.postSingleItem.bind(this));
-    router.put("/update/:prodId", this.putSingleItem.bind(this));
-    router.delete("/del/:prodId", this.deleteCartItem.bind(this));
+    router.put("/update", this.putSingleItem.bind(this));
+    router.post("/del", this.deleteCartItem.bind(this));
     router.delete("/del/all/:userId", this.deleteCartAll.bind(this));
     return router;
   }
@@ -68,12 +68,8 @@ class CartRouter {
 
   async deleteCartItem(req, res, next) {
     try {
-      await this.cartService.deleteSingleItem(
-        req.params.userId,
-        req.params.prodId
-      );
-      let result = await this.cartService.selectCartAll(req.params.userId);
-
+      await this.cartService.deleteCartItem(req.body.userId, req.body.prodId);
+      let result = await this.cartService.selectCartAll(req.body.userId);
       return res.status(200).json(result);
     } catch (error) {
       next(error);

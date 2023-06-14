@@ -17,7 +17,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 // Custom components
 import Navbar from "components/Navbar/Navbar";
-import CustomMessage from "components/customUI/CustomMessage";
+import { CustomBox, CustomMessage } from "components/customUI/index";
 // Stylesheet
 import "App.scss";
 
@@ -32,23 +32,34 @@ const App = () => {
         <div id="app">
           <Navbar />
           <CustomMessage theme={theme} />
-          <Routes>
-            <Route index element={<LandingPage />} />
-            <Route path="mycart" element={<CartPage />} />
-            <Route path="product" element={<ProductListPage />} />
-            <Route
-              path="product/detail/:prodId"
-              element={<ProductDetailPage />}
-            />
-            <Route path="policy" element={<PolicyPage />} />
-            <Route
-              path="signin"
-              element={
-                isLoggedIn ? <Navigate to="/" replace={true} /> : <SignInPage />
-              }
-            />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
+          <div id="view">
+            <Routes>
+              <Route index element={<LandingPage />} />
+              <Route
+                path="mycart"
+                element={
+                  isLoggedIn ? <CartPage /> : <Navigate to="/" replace="true" />
+                }
+              />
+              <Route path="product" element={<ProductListPage />} />
+              <Route
+                path="product/detail/:prodId"
+                element={<ProductDetailPage />}
+              />
+              <Route path="policy" element={<PolicyPage />} />
+              <Route
+                path="signin"
+                element={
+                  isLoggedIn ? (
+                    <Navigate to="/" replace={true} />
+                  ) : (
+                    <SignInPage />
+                  )
+                }
+              />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </div>
         </div>
       </ThemeProvider>
     </>
