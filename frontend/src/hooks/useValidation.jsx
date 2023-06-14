@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { checkAlphanum, checkName, checkPassword } from "utils/dataValidation";
+import { useTranslation } from "react-i18next";
 
 const useValidation = () => {
+  const { t } = useTranslation();
+
   const [inputValue, setInputValue] = useState({
     firstname: "",
     lastname: "",
@@ -26,7 +29,7 @@ const useValidation = () => {
           ...inputMsg,
           [namefield]: {
             status: "error",
-            msg: `Your ${namefield} needs to be 2 to 25 characters long with alphabets`,
+            msg: t("nameLength"),
           },
         });
   };
@@ -41,7 +44,7 @@ const useValidation = () => {
           ...inputMsg,
           username: {
             status: "error",
-            msg: "Your username needs to be 2 to 20 characters long with alphabets or numbers",
+            msg: t("usernameLength"),
           },
         });
   };
@@ -56,7 +59,7 @@ const useValidation = () => {
           ...inputMsg,
           password: {
             status: "error",
-            msg: "Your password needs to be 3 to 20 characters long with alphabets or numbers",
+            msg: t("passwordLength"),
           },
         });
   };

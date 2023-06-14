@@ -7,6 +7,12 @@ import {
   ProductCard as CustomProductCard,
 } from "./CustomCard";
 import CustomFormHelperText from "./CustomFormHelperText";
+import {
+  HoverBox as CustomHoverBox,
+  MenuBox as CustomMenuBox,
+  MenuItemBox as CustomMenuItemBox,
+  MenuTypography as CustomMenuTypography,
+} from "./CustomMenu";
 import CustomMessage from "./CustomMessage";
 
 export {
@@ -16,6 +22,10 @@ export {
   CustomCartCard,
   CustomFormCard,
   CustomFormHelperText,
+  CustomHoverBox,
+  CustomMenuBox,
+  CustomMenuItemBox,
+  CustomMenuTypography,
   CustomMessage,
   CustomProductCard,
 };

@@ -1,12 +1,12 @@
 export const leftNavbarItems = [
   {
     id: 0,
-    label: "Products",
+    label: "products",
     route: "/product",
   },
   {
     id: 1,
-    label: "Policy",
+    label: "policy",
     route: "/policy",
   },
 ];

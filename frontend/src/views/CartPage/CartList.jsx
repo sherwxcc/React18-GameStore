@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 // Contexts
 import { CartContext } from "contexts/index";
 // Components
@@ -14,19 +15,23 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 // Images
 import Empty from "assets/images/placeholders/emptyBox.png";
+// Utils
+import { formatPrice } from "utils/format";
 
 function CartList() {
+  const { t } = useTranslation();
+
   const { cart, cartTotalPrice, handleUpdateCart, handleDeleteCart } =
     useContext(CartContext);
 
   return (
     <>
-      <Typography variant="h4">My Cart</Typography>
+      <Typography variant="h4">{t("myCart")}</Typography>
       {cart.length ? (
         cart.map((el, i) => (
           <CustomCartCard key={el.prod_id}>
             <Box sx={{ padding: "6px 8px", width: "5%" }}>
-              <Typography variant="body1">{i + 1}</Typography>
+              <Typography variant="subtitle2">{i + 1}</Typography>
             </Box>
             <CardMedia
               component="img"
@@ -34,17 +39,17 @@ function CartList() {
               alt={el.prod_name}
               sx={{
                 maxWidth: "10%",
-                marginRight: "10%",
+                marginRight: "5%",
                 borderRadius: "10px",
               }}
             />
-            <Box sx={{ width: "30%", marginRight: "1rem" }}>
-              <Typography variant="body1">{el.prod_name}</Typography>
+            <Box sx={{ width: "35%", marginRight: "1rem" }}>
+              <Typography variant="subtitle2">{el.prod_name}</Typography>
             </Box>
             <Box sx={{ width: "20%", marginRight: "1rem", display: "flex" }}>
               <Button>
                 <Typography
-                  variant="body1"
+                  variant="subtitle2"
                   onClick={() => {
                     el.quantity++;
                     handleUpdateCart(el.prod_id, el.quantity);
@@ -54,11 +59,11 @@ function CartList() {
                 </Typography>
               </Button>
               <Box sx={{ padding: "6px 8px" }}>
-                <Typography variant="body1">{el.quantity}</Typography>
+                <Typography variant="subtitle2">{el.quantity}</Typography>
               </Box>
               <Button>
                 <Typography
-                  variant="body1"
+                  variant="subtitle2"
                   onClick={() => {
                     el.quantity--;
                     if (el.quantity >= 1) {
@@ -73,7 +78,7 @@ function CartList() {
               </Button>
             </Box>
             <Box sx={{ padding: "6px 8px", width: "15%" }}>
-              <Typography variant="body1">$ {el.price}</Typography>
+              <Typography variant="subtitle2">$ {el.price}</Typography>
             </Box>
             <Box
               sx={{ padding: "6px 8px", display: "flex", alignItems: "center" }}
@@ -104,11 +109,11 @@ function CartList() {
           <Box
             sx={{ display: "flex", justifyContent: "end", padding: "2.5rem" }}
           >
-            <Typography variant="body1">Total</Typography>
+            <Typography variant="subtitle2">{t("total")} : </Typography>
             <Typography
-              variant="body1"
-              sx={{ marginLeft: "2rem", marginRight: "13%" }}
-            >{`$ ${cartTotalPrice}`}</Typography>
+              variant="subtitle2"
+              sx={{ marginLeft: "2rem" }}
+            >{`HKD ${formatPrice(cartTotalPrice)}`}</Typography>
           </Box>
         </>
       )}

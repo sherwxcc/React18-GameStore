@@ -1,19 +1,24 @@
-import { useContext } from "react";
-// import MenuIcon from "@mui/icons-material/Menu";
-import GamerStopLogo from "assets/icons/GamerStopLogo.png";
+import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+// Contexts
+import AccountContext from "contexts/AccountContext";
+import CartContext from "contexts/CartContext";
+import ColorContext from "contexts/ColorContext";
+// Components
+import { CustomBadge } from "components/customUI/index";
+import NavMenu from "./NavMenu";
+// MUI
+import { AppBar, Box, SvgIcon, Toolbar, Typography } from "@mui/material/index";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LanguageIcon from "@mui/icons-material/Language";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { AppBar, Box, SvgIcon, Toolbar, Typography } from "@mui/material/index";
-import { CustomBadge } from "components/customUI/index";
-import styled from "styled-components";
-import AccountContext from "contexts/AccountContext";
-import CartContext from "contexts/CartContext";
-import ColorContext from "contexts/ColorContext";
-
-import { Link } from "react-router-dom";
+// Constants
 import { leftNavbarItems } from "./constants/navbarListItems";
+// Images
+import GamerStopLogo from "assets/icons/GamerStopLogo.png";
 
 const MenuTypography = styled(Typography).attrs(() => ({
   vairant: "subtitle1",
@@ -51,9 +56,13 @@ const StyledIconBox = styled(FlexBox)`
 `;
 
 const Navbar = () => {
+  const { t } = useTranslation();
+
   const { cartLength, handleClearCart } = useContext(CartContext);
   const { theme, mode, toggleMode } = useContext(ColorContext);
   const { isLoggedIn, user, handleLogOut } = useContext(AccountContext);
+
+  const [showLang, setShowLang] = useState(false);
 
   return (
     <>
@@ -85,17 +94,22 @@ const Navbar = () => {
                     color="text.primary"
                     theme={theme}
                   >
-                    {el.label.toUpperCase()}
+                    {t(`${el.label}`).toUpperCase()}
                   </MenuTypography>
                 </Link>
               ))}
             </FlexBox>
 
             <FlexBox>
-              <StyledIconBox theme={theme}>
+              <StyledIconBox
+                theme={theme}
+                onMouseEnter={() => setShowLang(true)}
+                onMouseLeave={() => setShowLang(false)}
+              >
                 <SvgIcon color="svgPrimary">
                   <LanguageIcon></LanguageIcon>
                 </SvgIcon>
+                {showLang && <NavMenu />}
               </StyledIconBox>
 
               {isLoggedIn && (
@@ -127,7 +141,7 @@ const Navbar = () => {
                     handleLogOut();
                   }}
                 >
-                  {user?.username || "LOG OUT"}
+                  {user?.username || t("logOut").toUpperCase()}
                 </SignInTypography>
               ) : (
                 <Link to="/signin">
@@ -136,7 +150,7 @@ const Navbar = () => {
                     color="text.primary"
                     theme={theme}
                   >
-                    SIGN IN
+                    {t("signIn")}
                   </SignInTypography>
                 </Link>
               )}

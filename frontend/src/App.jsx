@@ -17,7 +17,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 // Custom components
 import Navbar from "components/Navbar/Navbar";
-import { CustomBox, CustomMessage } from "components/customUI/index";
+import { CustomMessage } from "components/customUI/index";
 // Stylesheet
 import "App.scss";
 

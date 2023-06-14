@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 // Contexts
 import { CartContext, ColorContext } from "contexts/index";
@@ -17,6 +18,8 @@ import { CustomProductCard } from "components/customUI/index";
 import { formatPrice } from "utils/format";
 
 const ProductCard = ({ el }) => {
+  const { t } = useTranslation();
+
   const { theme } = useContext(ColorContext);
   const { handleAddCart } = useContext(CartContext);
 
@@ -82,7 +85,7 @@ const ProductCard = ({ el }) => {
             sx={{ marginTop: "1rem" }}
           >
             <Typography variant="subtitle2" color="text.primary">
-              Price:
+              {t("price")}:
             </Typography>
             <Typography variant="subtitle2" color="text.primary">
               {"HKD " + formatPrice(el.price)}

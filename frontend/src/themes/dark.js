@@ -32,6 +32,7 @@ const dark = createTheme({
     svgPrimary: { main: darkPalette.textPrimary },
     svgSecondary: { main: darkPalette.textSecondary },
     svgContrast: { main: darkPalette.textContrast },
+    basicBg: globalPalette.dark,
     gradient: darkPalette.linearGradient,
     gradientLight: darkPalette.linearGradientLight,
     gradientDim: darkPalette.linearGradientDim,

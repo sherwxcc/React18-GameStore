@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 // Contexts
 import { AccountContext, MessageContext } from "contexts/index";
 // Hooks
@@ -26,6 +27,8 @@ import {
 import MESSAGE_CODE from "data/messageCode";
 
 function SignInForm() {
+  const { t } = useTranslation();
+
   const { handleLogIn } = useContext(AccountContext);
   const { messageHandler } = useContext(MessageContext);
 
@@ -85,16 +88,16 @@ function SignInForm() {
           color="text.primary"
           sx={{ mb: "2rem" }}
         >
-          Sign In
+          {t("signIn")}
         </Typography>
 
         <Box>
           <Typography variant="body2" color="text.primary">
-            Username
+            {t("username")}
           </Typography>
           <FormControl fullWidth>
             <Input
-              placeholder="Type your username"
+              placeholder={t("typeUsername")}
               required
               type="text"
               value={inputValue.username}
@@ -121,7 +124,7 @@ function SignInForm() {
               margin="dense"
               type={inputMsg.username.status}
             >
-              {inputMsg.username.msg}
+              {t(`${inputMsg.username.msg}`)}
             </CustomFormHelperText>
           </FormControl>
           <Typography
@@ -129,11 +132,11 @@ function SignInForm() {
             color="text.primary"
             sx={{ mt: "1.5rem" }}
           >
-            Password
+            {t("password")}
           </Typography>
           <FormControl fullWidth>
             <Input
-              placeholder="Type your password"
+              placeholder={t("typePassword")}
               required
               type={isVisible ? "text" : "password"}
               value={inputValue.password}
@@ -173,11 +176,11 @@ function SignInForm() {
               margin="dense"
               type={inputMsg.password.status}
             >
-              {inputMsg.password.msg}
+              {t(`${inputMsg.password.msg}`)}
             </CustomFormHelperText>
           </FormControl>
 
-          <Typography
+          {/* <Typography
             variant="caption"
             color="text.secondary"
             sx={{
@@ -188,7 +191,7 @@ function SignInForm() {
             }}
           >
             Forget Password?
-          </Typography>
+          </Typography> */}
         </Box>
 
         {failMessage && (
@@ -201,7 +204,7 @@ function SignInForm() {
               mt: "1rem",
             }}
           >
-            {failMessage}
+            {t(`${failMessage}`)}
           </Typography>
         )}
 
@@ -210,7 +213,7 @@ function SignInForm() {
           color="primary"
           onClick={() => loginHandler()}
         >
-          SIGN IN
+          {t("signIn").toUpperCase()}
         </CustomButton>
       </CustomFormCard>
     </>

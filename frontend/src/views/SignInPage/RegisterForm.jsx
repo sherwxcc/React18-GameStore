@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 // Contexts
 import { AccountContext, MessageContext } from "contexts/index";
 // Hooks
@@ -26,6 +27,8 @@ import {
 import MESSAGE_CODE from "data/messageCode";
 
 function RegisterForm() {
+  const { t } = useTranslation();
+
   const { handleRegister } = useContext(AccountContext);
   const { messageHandler } = useContext(MessageContext);
 
@@ -74,7 +77,7 @@ function RegisterForm() {
       if (!inputValue[field]) {
         await setInputMsg({
           ...inputMsg,
-          [field]: { status: "error", msg: "This field is required" },
+          [field]: { status: "error", msg: t("fieldRequired") },
         });
       }
     }
@@ -90,15 +93,15 @@ function RegisterForm() {
           color="text.primary"
           sx={{ mb: "2rem" }}
         >
-          Register
+          {t("register")}
         </Typography>
 
         <Typography variant="body2" color="text.primary">
-          First Name
+          {t("firstName")}
         </Typography>
         <FormControl fullWidth>
           <Input
-            placeholder="Type your first name"
+            placeholder={t("typeFirstName")}
             startAdornment={
               <InputAdornment position="start">
                 <BadgeIcon color="svgPrimary" />
@@ -119,16 +122,16 @@ function RegisterForm() {
             }}
           ></Input>
           <CustomFormHelperText margin="dense" type={inputMsg.firstname.status}>
-            {inputMsg.firstname.msg}
+            {t(`${inputMsg.firstname.msg}`)}
           </CustomFormHelperText>
         </FormControl>
 
         <Typography variant="body2" color="text.primary" sx={{ mt: "1.5rem" }}>
-          Last Name
+          {t("lastName")}
         </Typography>
         <FormControl fullWidth>
           <Input
-            placeholder="Type your last name"
+            placeholder={t("typeLastName")}
             startAdornment={
               <InputAdornment position="start">
                 <BadgeIcon color="svgPrimary" />
@@ -149,16 +152,16 @@ function RegisterForm() {
             }}
           ></Input>
           <CustomFormHelperText margin="dense" type={inputMsg.lastname.status}>
-            {inputMsg.lastname.msg}
+            {t(`${inputMsg.lastname.msg}`)}
           </CustomFormHelperText>
         </FormControl>
 
         <Typography variant="body2" color="text.primary" sx={{ mt: "1.5rem" }}>
-          Username
+          {t("username")}
         </Typography>
         <FormControl fullWidth>
           <Input
-            placeholder="Type your username"
+            placeholder={t("typeUsername")}
             required
             value={inputValue.username}
             error={inputMsg.username.status === "error"}
@@ -182,17 +185,17 @@ function RegisterForm() {
             }}
           ></Input>
           <CustomFormHelperText margin="dense" type={inputMsg.username.status}>
-            {inputMsg.username.msg}
+            {t(`${inputMsg.username.msg}`)}
           </CustomFormHelperText>
         </FormControl>
 
         <Typography variant="body2" color="text.primary" sx={{ mt: "1.5rem" }}>
-          Password
+          {t("password")}
         </Typography>
         <FormControl fullWidth sx={{ mb: "1rem" }}>
           <Input
             type={isVisible ? "text" : "password"}
-            placeholder="Type your password"
+            placeholder={t("typePassword")}
             required
             value={inputValue.password}
             error={inputMsg.password.status === "error"}
@@ -229,7 +232,7 @@ function RegisterForm() {
             }}
           ></Input>
           <CustomFormHelperText margin="dense" type={inputMsg.password.status}>
-            {inputMsg.password.msg}
+            {t(`${inputMsg.password.msg}`)}
           </CustomFormHelperText>
         </FormControl>
         <CustomButton
@@ -240,7 +243,7 @@ function RegisterForm() {
             registerHandler();
           }}
         >
-          REGISTER
+          {t("register").toUpperCase()}
         </CustomButton>
       </CustomFormCard>
     </>

@@ -14,22 +14,25 @@ import { AccountProvider } from "contexts/AccountContext";
 import { CartProvider } from "contexts/CartContext";
 import { ColorProvider } from "contexts/ColorContext";
 import { MessageProvider } from "contexts/MessageContext";
+import "./i18n";
 import App from "App.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ColorProvider>
-      <CartProvider>
-        <AccountProvider>
-          <MessageProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </MessageProvider>
-        </AccountProvider>
-      </CartProvider>
-    </ColorProvider>
+    <React.Suspense fallback="loading">
+      <ColorProvider>
+        <CartProvider>
+          <AccountProvider>
+            <MessageProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </MessageProvider>
+          </AccountProvider>
+        </CartProvider>
+      </ColorProvider>
+    </React.Suspense>
   </React.StrictMode>
 );
 
