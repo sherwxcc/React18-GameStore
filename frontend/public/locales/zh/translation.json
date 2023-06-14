@@ -4,6 +4,7 @@
   "policy": "政策",
   "myCart": "我的購物車",
   "total": "總計",
+  "cartIsEmpty": "您的購物車是空的",
   "signIn": "登錄",
   "register": "註冊",
   "logOut": "登出",

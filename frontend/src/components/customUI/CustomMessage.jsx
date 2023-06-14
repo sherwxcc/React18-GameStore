@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Alert, Snackbar } from "@mui/material/index";
 import MessageContext from "contexts/MessageContext";
 import Slide from "@mui/material/Slide";
@@ -8,6 +9,8 @@ function TransitionDown(props) {
 }
 
 function CustomMessage({ theme }) {
+  const { t } = useTranslation();
+
   const { message } = useContext(MessageContext);
 
   const [isOpen, setIsOpen] = useState(true);
@@ -38,7 +41,7 @@ function CustomMessage({ theme }) {
           }}
           onClose={() => setIsOpen(false)}
         >
-          {message.content}
+          {t(`${message.content}`)}
         </Alert>
       </Snackbar>
     </>

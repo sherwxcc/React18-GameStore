@@ -4,6 +4,7 @@
   "policy": "Politik",
   "myCart": "Mein Warenkorb",
   "total": "Gesamt",
+  "cartIsEmpty": "Ihr Warenkorb ist leer",
   "signIn": "Anmelden",
   "register": "Registrieren",
   "logOut": "Ausloggen",

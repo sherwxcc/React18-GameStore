@@ -95,7 +95,7 @@ function CartList() {
         ))
       ) : (
         <Box sx={{ textAlign: "center" }}>
-          <Typography variant="body1">Your cart is empty</Typography>
+          <Typography variant="body1">{t("cartIsEmpty")} &#127773;</Typography>
           <Box
             component="img"
             sx={{ width: "200px", marginTop: "2rem" }}
@@ -104,7 +104,7 @@ function CartList() {
         </Box>
       )}
 
-      {cart.length && (
+      {cart.length ? (
         <>
           <Box
             sx={{ display: "flex", justifyContent: "end", padding: "2.5rem" }}
@@ -116,7 +116,7 @@ function CartList() {
             >{`HKD ${formatPrice(cartTotalPrice)}`}</Typography>
           </Box>
         </>
-      )}
+      ) : null}
     </>
   );
 }

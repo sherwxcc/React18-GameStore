@@ -28,7 +28,9 @@ export function CartProvider({ children }) {
   }, [cart]);
 
   const cartTotalPrice = useMemo(() => {
-    return cart?.map((el) => el.price).reduce((accu, curr) => accu + curr, 0);
+    return cart
+      ?.map((el) => el.price * el.quantity)
+      .reduce((accu, curr) => accu + curr, 0);
   }, [cart]);
 
   const handleGetCart = async (userId) => {

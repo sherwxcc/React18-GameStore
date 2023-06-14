@@ -4,6 +4,7 @@
   "policy": "Policy",
   "myCart": "My Cart",
   "total": "Total",
+  "cartIsEmpty": "Your cart is empty",
   "signIn": "Sign In",
   "register": "Register",
   "logOut": "Log Out",
