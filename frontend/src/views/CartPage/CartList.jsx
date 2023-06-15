@@ -46,7 +46,7 @@ function CartList() {
             <Box sx={{ width: "35%", marginRight: "1rem" }}>
               <Typography variant="subtitle2">{el.prod_name}</Typography>
             </Box>
-            <Box sx={{ width: "20%", marginRight: "1rem", display: "flex" }}>
+            <Box sx={{ width: "15%", marginRight: "1rem", display: "flex" }}>
               <Button>
                 <Typography
                   variant="subtitle2"
@@ -77,8 +77,10 @@ function CartList() {
                 </Typography>
               </Button>
             </Box>
-            <Box sx={{ padding: "6px 8px", width: "15%" }}>
-              <Typography variant="subtitle2">$ {el.price}</Typography>
+            <Box sx={{ padding: "6px 8px", width: "15%", marginRight: "5%", textAlign: "right" }}>
+              <Typography variant="subtitle2">
+                HKD {formatPrice(el.price)}
+              </Typography>
             </Box>
             <Box
               sx={{ padding: "6px 8px", display: "flex", alignItems: "center" }}

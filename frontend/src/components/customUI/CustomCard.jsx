@@ -25,7 +25,6 @@ export const ProductCard = styled(Card).attrs(() => ({
 export const CartCard = styled(Card).attrs(() => ({
   variant: "cart",
 }))`
-  max-width: 1000px;
   margin: 1rem;
   box-shadow: 1px 1px 20px #9dbf9e40;
   background: #fefefe20 !important;

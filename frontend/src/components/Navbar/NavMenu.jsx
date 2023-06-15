@@ -1,22 +1,20 @@
 import { useContext } from "react";
-import { useTranslation } from "react-i18next";
+// Contexts
 import ColorContext from "contexts/ColorContext";
+import LanguageContext from "contexts/LanguageContext";
+// Components
 import {
   CustomHoverBox,
   CustomMenuBox,
   CustomMenuItemBox,
   CustomMenuTypography,
 } from "components/customUI/index";
-// import { CustomMenu } from "components/customUI/index";
+// Constants
 import LANG from "data/lang";
 
 function NavMenu() {
   const { theme } = useContext(ColorContext);
-  const { i18n } = useTranslation();
-
-  const changeLang = (newLang) => {
-    i18n.changeLanguage(newLang);
-  };
+  const { changeLang } = useContext(LanguageContext);
 
   return (
     <>

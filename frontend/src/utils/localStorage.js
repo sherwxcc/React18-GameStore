@@ -25,3 +25,7 @@ export const getJWT = () => {
 export const clearLocalUser = () => {
   return localStorage.removeItem("gspUser");
 };
+
+export const getLocalLang = () => {
+  return localStorage.getItem("i18nextLng");
+};
