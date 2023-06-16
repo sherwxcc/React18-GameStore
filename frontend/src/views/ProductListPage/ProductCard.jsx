@@ -28,7 +28,7 @@ const ProductCard = ({ el }) => {
       <CustomProductCard key={el.prod_id} theme={theme} className="card-base">
         <CardMedia
           component="img"
-          image={`/static/images/products/${el.img_url}.png`}
+          image={require(`assets/images/products/${el.img_url}.png`)}
           alt={el.prod_name}
           sx={{
             maxWidth: "100%",

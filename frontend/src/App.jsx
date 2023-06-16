@@ -17,6 +17,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 // Custom components
 import Navbar from "components/Navbar/Navbar";
+import Footer from "components/Footer/Footer";
 import { CustomMessage } from "components/customUI/index";
 // Stylesheet
 import "App.scss";
@@ -60,6 +61,7 @@ const App = () => {
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>
+          <Footer />
         </div>
       </ThemeProvider>
     </>

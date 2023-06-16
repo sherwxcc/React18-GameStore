@@ -1,13 +1,11 @@
 // MUI
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 // Contexts
 import LanguageContext from "contexts/LanguageContext";
 // MUI
 import { Box, Typography } from "@mui/material/index";
-// Utils
-import { getLocalLang } from "utils/localStorage";
 // Markdowns
 import policyDE from "assets/markdowns/policy.de.md";
 import policyEN from "assets/markdowns/policy.en.md";
