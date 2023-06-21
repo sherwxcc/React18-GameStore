@@ -10,12 +10,12 @@ function ProductListPage() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div className="view">
       <Typography variant="h4">{t("products")}</Typography>
       <ProductListProvider>
         <ProductList />
       </ProductListProvider>
-    </>
+    </div>
   );
 }
 

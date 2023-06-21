@@ -1,10 +1,12 @@
 {
   "footerDisclaimer": "免責聲明：本網上遊戲商店示範頁面僅供展示之用，並非商業用途。所有內容，包括圖片和遊戲，均僅用於教育和測試目的。任何與真實產品或服務之相似之處，純屬巧合。本網站與任何商業實體皆無關聯，且不以任何方式產生收入或利潤。",
-  "landingText": "歡迎來到 GamerStop",
+  "landingText": "讓遊戲開始吧",
+  "learnMore": "了解更多",
   "exploreProducts": "查看其他商品",
   "backToPrev": "返回",
   "products": "商品",
   "policy": "政策",
+  "myOrders": "我的訂單",
   "productDetail": "商品詳情",
   "brand": "廠商",
   "productCat": "商品分類",
@@ -37,5 +39,10 @@
   "fieldRequired": "此處不能留空",
   "nameLength": "您的姓名需要包含 2 到 25 個字母字符",
   "usernameLength": "您的用戶名長度必須為 2 到 20 個字符",
-  "passwordLength": "您的密碼需要包含 3 到 20 個字符"
+  "passwordLength": "您的密碼需要包含 3 到 20 個字符",
+  "oops": "哎呀",
+  "pageDoesntExist": "你造訪的頁面不存在",
+  "pleaseCheckUrl": "請檢查您的網址",
+  "or": "或",
+  "returnHome": "返回首頁"
 }

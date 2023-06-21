@@ -11,7 +11,7 @@ function ProductDetailPage() {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div className="view">
       <ProductDetailProvider>
         <Typography variant="h4">{t("productDetail")}</Typography>
         <Box
@@ -26,7 +26,7 @@ function ProductDetailPage() {
           <DetailContent />
         </Box>
       </ProductDetailProvider>
-    </>
+    </div>
   );
 }
 

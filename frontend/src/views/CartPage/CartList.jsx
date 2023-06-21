@@ -14,7 +14,7 @@ import {
 } from "@mui/material/index";
 import DeleteIcon from "@mui/icons-material/Delete";
 // Images
-import Empty from "assets/images/placeholders/emptyBox.png";
+import Empty from "assets/images/others/emptyBox.png";
 // Utils
 import { formatPrice } from "utils/format";
 

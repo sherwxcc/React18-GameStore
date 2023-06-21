@@ -67,7 +67,14 @@ const Navbar = () => {
   return (
     <>
       <Box>
-        <AppBar position="static">
+        <AppBar
+          position="fixed"
+          sx={{
+            background: theme.palette.basicBg,
+            borderRadius: "0 0 5px 10px",
+            opacity: "0.9",
+          }}
+        >
           <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
             <FlexBox>
               <Link to="/">

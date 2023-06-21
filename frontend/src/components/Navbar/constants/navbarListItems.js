@@ -9,4 +9,9 @@ export const leftNavbarItems = [
     label: "policy",
     route: "/policy",
   },
+  {
+    id: 2,
+    label: "myOrders",
+    route: "/order",
+  },
 ];

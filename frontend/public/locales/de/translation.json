@@ -1,9 +1,11 @@
 {
   "footerDisclaimer": "Haftungsausschluss: Diese Online-Spieleshop-Demo-Seite dient nur Demonstrationszwecken und ist nicht für den kommerziellen Gebrauch bestimmt. Alle Inhalte, einschließlich Bilder und Spiele, werden nur für Bildungs- und Testzwecke verwendet. Jede Ähnlichkeit mit realen Produkten oder Dienstleistungen ist rein zufällig. Die Seite ist nicht mit einem kommerziellen Unternehmen verbunden und generiert in keiner Weise Einnahmen oder Gewinne.",
-  "landingText": "Willkommen bei GamerStop",
+  "landingText": "Lasst die Spiele beginnen",
+  "learnMore": "Erfahren Sie mehr",
   "exploreProducts": "Andere Produkte ansehen",
   "products": "Produkte",
   "policy": "Politik",
+  "myOrders": "Meine Bestellungen",
   "productDetail": "Produktdetail",
   "brand": "Marke",
   "productCat": "Produktkategorie",
@@ -36,5 +38,10 @@
   "fieldRequired": "Dieses Feld ist erforderlich",
   "nameLength": "Ihr Name muss aus Buchstaben bestehen und 2 bis 25 Zeichen lang sein",
   "usernameLength": "Ihr Benutzername muss 2 bis 20 Zeichen lang sein und Buchstaben oder Zahlen enthalten",
-  "passwordLength": "Ihr Passwort muss 3 bis 20 Zeichen lang sein und Buchstaben oder Zahlen enthalten"
+  "passwordLength": "Ihr Passwort muss 3 bis 20 Zeichen lang sein und Buchstaben oder Zahlen enthalten",
+  "oops": "Hoppla",
+  "pageDoesntExist": "Diese Seite existiert nicht",
+  "pleaseCheckUrl": "Bitte überprüfen Sie Ihre URL",
+  "or": "oder",
+  "returnHome": "Zur Startseite zurückkehren"
 }

@@ -5,7 +5,7 @@ export const HoverBox = styled(Box)`
   position: absolute;
   text-align: center;
   top: 0;
-  padding-top: 65px;
+  padding-top: 66px;
 `;
 
 export const MenuBox = styled(Box)`

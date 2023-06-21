@@ -33,34 +33,28 @@ const App = () => {
         <div id="app">
           <Navbar />
           <CustomMessage theme={theme} />
-          <div id="view">
-            <Routes>
-              <Route index element={<LandingPage />} />
-              <Route
-                path="mycart"
-                element={
-                  isLoggedIn ? <CartPage /> : <Navigate to="/" replace="true" />
-                }
-              />
-              <Route path="product" element={<ProductListPage />} />
-              <Route
-                path="product/detail/:prodId"
-                element={<ProductDetailPage />}
-              />
-              <Route path="policy" element={<PolicyPage />} />
-              <Route
-                path="signin"
-                element={
-                  isLoggedIn ? (
-                    <Navigate to="/" replace={true} />
-                  ) : (
-                    <SignInPage />
-                  )
-                }
-              />
-              <Route path="*" element={<ErrorPage />} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route index element={<LandingPage />} />
+            <Route
+              path="mycart"
+              element={
+                isLoggedIn ? <CartPage /> : <Navigate to="/" replace="true" />
+              }
+            />
+            <Route path="product" element={<ProductListPage />} />
+            <Route
+              path="product/detail/:prodId"
+              element={<ProductDetailPage />}
+            />
+            <Route path="policy" element={<PolicyPage />} />
+            <Route
+              path="signin"
+              element={
+                isLoggedIn ? <Navigate to="/" replace={true} /> : <SignInPage />
+              }
+            />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
           <Footer />
         </div>
       </ThemeProvider>

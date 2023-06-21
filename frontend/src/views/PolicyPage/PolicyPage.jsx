@@ -28,12 +28,12 @@ function PolicyPage() {
   }, [lang]);
 
   return (
-    <>
+    <div className="view">
       <Typography variant="h4">{t("policy")}</Typography>
       <Box sx={{ fontSize: "1rem" }}>
         <ReactMarkdown children={policy} />
       </Box>
-    </>
+    </div>
   );
 }
 
