@@ -15,6 +15,7 @@ import { CartProvider } from "contexts/CartContext";
 import { ColorProvider } from "contexts/ColorContext";
 import { LanguageProvider } from "contexts/LanguageContext";
 import { MessageProvider } from "contexts/MessageContext";
+import { OrderProvider } from "contexts/OrderContext";
 import "./i18n";
 import App from "App.jsx";
 
@@ -23,17 +24,19 @@ root.render(
   <React.StrictMode>
     <React.Suspense fallback="loading">
       <LanguageProvider>
-        <ColorProvider>
-          <CartProvider>
-            <AccountProvider>
-              <MessageProvider>
-                <BrowserRouter>
-                  <App />
-                </BrowserRouter>
-              </MessageProvider>
-            </AccountProvider>
-          </CartProvider>
-        </ColorProvider>
+        <MessageProvider>
+          <ColorProvider>
+            <CartProvider>
+              <OrderProvider>
+                <AccountProvider>
+                  <BrowserRouter>
+                    <App />
+                  </BrowserRouter>
+                </AccountProvider>
+              </OrderProvider>
+            </CartProvider>
+          </ColorProvider>
+        </MessageProvider>
       </LanguageProvider>
     </React.Suspense>
   </React.StrictMode>

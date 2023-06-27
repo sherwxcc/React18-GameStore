@@ -9,8 +9,10 @@ const API = {
   addCartItem: { url: "/cart/add", method: "POST" },
   updateCartItem: { url: "/cart/update", method: "PUT" },
   deleteCartItem: { url: "/cart/del", method: "POST" },
-  clearCart: { url: "/cart/del/all", method: "DELETE" },
+  clearCart: { url: "/cart/del/all", method: "POST" },
   // Order Routes
+  getOrderList: { url: "/order/all", method: "GET" },
+  postOrder: { url: "/order/add", method: "POST" },
   // Product Routes
   getProdList: { url: "/product/list", method: "GET" },
   getProdDetail: { url: "/product/detail", method: "GET" },

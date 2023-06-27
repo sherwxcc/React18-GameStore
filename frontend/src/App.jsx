@@ -7,6 +7,7 @@ import {
   CartPage,
   ErrorPage,
   LandingPage,
+  OrderPage,
   SignInPage,
   PolicyPage,
   ProductListPage,
@@ -47,6 +48,7 @@ const App = () => {
               element={<ProductDetailPage />}
             />
             <Route path="policy" element={<PolicyPage />} />
+            <Route path="order" element={<OrderPage />} />
             <Route
               path="signin"
               element={

@@ -20,7 +20,7 @@ class ProductService {
     if (detail[0]) {
       return { code: 20000, detail: detail[0] }; // Product detail
     } else {
-      return { code: 10006, message: "Item not found" };
+      return { code: 10006 };
     }
   }
 
@@ -30,7 +30,7 @@ class ProductService {
     if (list) {
       return { code: 20000, list }; // Matched product
     } else {
-      return { code: 10005, message: "No matching item" };
+      return { code: 10005 };
     }
   }
 }

@@ -63,7 +63,7 @@ function RegisterForm() {
           },
         });
       }
-      if (res.code === 20001) {
+      if (res.code === 20002) {
         messageHandler(
           MESSAGE_CODE[res.code].type,
           MESSAGE_CODE[res.code].message

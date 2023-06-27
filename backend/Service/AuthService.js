@@ -12,8 +12,6 @@ class AuthService {
       .where("username", username)
       .limit(1);
 
-    console.log("Matched: ", matchedUser);
-
     if (matchedUser.length) {
       return { code: 10003 }; // User already exit
     } else {
@@ -40,7 +38,7 @@ class AuthService {
         };
         let token = jwt.sign(payload, config.jwtSecret);
         return {
-          code: 20000,
+          code: 20001, // Login success
           token,
           username,
           userId: matchedUser[0].user_id,
@@ -59,7 +57,7 @@ class AuthService {
       ...newUser,
       password: hashedPassword,
     });
-    return { code: 20001 };
+    return { code: 20002 };
   }
 }
 

@@ -17,6 +17,8 @@
   "myCart": "Mein Warenkorb",
   "addToCart": "In den Warenkorb legen",
   "total": "Gesamt",
+  "checkout": "Kasse",
+  "clearCart": "Leeren",
   "cartIsEmpty": "Ihr Warenkorb ist leer",
   "signIn": "Anmelden",
   "register": "Registrieren",
@@ -43,5 +45,18 @@
   "pageDoesntExist": "Diese Seite existiert nicht",
   "pleaseCheckUrl": "Bitte überprüfen Sie Ihre URL",
   "or": "oder",
-  "returnHome": "Zur Startseite zurückkehren"
+  "returnHome": "Zur Startseite zurückkehren",
+  "addedToCart": "Neuer Artikel zum Warenkorb hinzugefügt",
+  "updatedCart": "Warenkorbartikel aktualisiert",
+  "placedOrder": "Ihre Bestellung wurde erfolgreich übermittelt",
+  "orderNum": "Befehl#",
+  "orderDate": "Auftragsdatum",
+  "productName": "Produktname",
+  "quantity": "Menge",
+  "status": "Status",
+  "unpaid": "Unbezahlt",
+  "paid": "Bezahlt",
+  "delivered": "Geliefert",
+  "cancelled": "Abgesagt",
+  "refunded": "Erstattet"
 }

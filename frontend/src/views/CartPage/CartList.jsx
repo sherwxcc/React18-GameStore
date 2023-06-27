@@ -12,22 +12,23 @@ import {
   SvgIcon,
   Typography,
 } from "@mui/material/index";
+import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-// Images
-import Empty from "assets/images/others/emptyBox.png";
+import RemoveIcon from "@mui/icons-material/Remove";
 // Utils
 import { formatPrice } from "utils/format";
+// Images
+import Empty from "assets/images/others/emptyBox.png";
 
 function CartList() {
   const { t } = useTranslation();
 
-  const { cart, cartTotalPrice, handleUpdateCart, handleDeleteCart } =
-    useContext(CartContext);
+  const { cart, handleUpdateCart, handleDeleteCart } = useContext(CartContext);
 
   return (
     <>
       <Typography variant="h4">{t("myCart")}</Typography>
-      {cart.length ? (
+      {cart?.length ? (
         cart.map((el, i) => (
           <CustomCartCard key={el.prod_id}>
             <Box sx={{ padding: "6px 8px", width: "5%" }}>
@@ -46,38 +47,43 @@ function CartList() {
             <Box sx={{ width: "35%", marginRight: "1rem" }}>
               <Typography variant="subtitle2">{el.prod_name}</Typography>
             </Box>
-            <Box sx={{ width: "15%", marginRight: "1rem", display: "flex" }}>
-              <Button>
-                <Typography
-                  variant="subtitle2"
-                  onClick={() => {
-                    el.quantity++;
-                    handleUpdateCart(el.prod_id, el.quantity);
-                  }}
-                >
-                  +
-                </Typography>
+            <Box sx={{ marginRight: "1rem", display: "flex" }}>
+              <Button
+                onClick={() => {
+                  el.quantity++;
+                  handleUpdateCart(el.prod_id, el.quantity);
+                }}
+              >
+                <SvgIcon color="svgPrimary" sx={{ fontSize: "0.8em" }}>
+                  <AddIcon />
+                </SvgIcon>
               </Button>
               <Box sx={{ padding: "6px 8px" }}>
                 <Typography variant="subtitle2">{el.quantity}</Typography>
               </Box>
-              <Button>
-                <Typography
-                  variant="subtitle2"
-                  onClick={() => {
-                    el.quantity--;
-                    if (el.quantity >= 1) {
-                      handleUpdateCart(el.prod_id, el.quantity);
-                    } else {
-                      handleDeleteCart(el.prod_id);
-                    }
-                  }}
-                >
-                  -
-                </Typography>
+              <Button
+                onClick={() => {
+                  el.quantity--;
+                  if (el.quantity >= 1) {
+                    handleUpdateCart(el.prod_id, el.quantity);
+                  } else {
+                    handleDeleteCart(el.prod_id);
+                  }
+                }}
+              >
+                <SvgIcon color="svgPrimary" sx={{ fontSize: "0.8em" }}>
+                  <RemoveIcon />
+                </SvgIcon>
               </Button>
             </Box>
-            <Box sx={{ padding: "6px 8px", width: "15%", marginRight: "5%", textAlign: "right" }}>
+            <Box
+              sx={{
+                padding: "6px 8px",
+                width: "15%",
+                marginRight: "5%",
+                textAlign: "right",
+              }}
+            >
               <Typography variant="subtitle2">
                 HKD {formatPrice(el.price)}
               </Typography>
@@ -105,20 +111,6 @@ function CartList() {
           />
         </Box>
       )}
-
-      {cart.length ? (
-        <>
-          <Box
-            sx={{ display: "flex", justifyContent: "end", padding: "2.5rem" }}
-          >
-            <Typography variant="subtitle2">{t("total")} : </Typography>
-            <Typography
-              variant="subtitle2"
-              sx={{ marginLeft: "2rem" }}
-            >{`HKD ${formatPrice(cartTotalPrice)}`}</Typography>
-          </Box>
-        </>
-      ) : null}
     </>
   );
 }

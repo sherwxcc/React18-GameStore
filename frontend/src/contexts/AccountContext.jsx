@@ -26,7 +26,7 @@ export function AccountProvider({ children }) {
 
   const handleLogIn = async (data) => {
     let res = await login(data);
-    if (res.data.code === 20000) {
+    if (res.data.code === 20001) {
       let user = {
         token: res.data.token,
         username: res.data.username,

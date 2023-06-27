@@ -11,14 +11,14 @@ class CartRouter {
     router.post("/add", this.postSingleItem.bind(this));
     router.put("/update", this.putSingleItem.bind(this));
     router.post("/del", this.deleteCartItem.bind(this));
-    router.delete("/del/all/:userId", this.deleteCartAll.bind(this));
+    router.post("/del/all/:userId", this.deleteCartAll.bind(this));
     return router;
   }
 
   async getCartAll(req, res, next) {
     try {
       let result = await this.cartService.selectCartAll(req.params.userId);
-
+      console.log("RESULT: ", result);
       return res.status(200).json(result);
     } catch (error) {
       next(error);

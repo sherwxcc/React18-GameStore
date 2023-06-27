@@ -18,7 +18,7 @@ export function MessageProvider({ children }) {
         severity: "info",
         content: "",
       });
-    }, 3000);
+    }, 4000);
   };
 
   return (

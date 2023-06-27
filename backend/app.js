@@ -35,7 +35,7 @@ const cartRouter = new CartRouter(cartService);
 const OrderService = require("./Service/OrderService");
 const OrderRouter = require("./Router/OrderRouter");
 const orderService = new OrderService(knex);
-const orderRouter = new OrderRouter(orderService);
+const orderRouter = new OrderRouter(orderService, cartService);
 
 // Setup product service and router
 const ProductService = require("./Service/ProductService");

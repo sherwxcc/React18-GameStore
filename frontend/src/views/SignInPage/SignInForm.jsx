@@ -49,8 +49,7 @@ function SignInForm() {
         username: inputValue.username,
         password: inputValue.password,
       });
-      if (res.code === 20000) {
-        console.log("HANDLER SUCCESS");
+      if (res.code === 20001) {
         setFailMessage("");
         messageHandler(
           MESSAGE_CODE[res.code].type,
@@ -60,7 +59,6 @@ function SignInForm() {
         resetInputMsg();
         return;
       }
-      console.log("LOGIN FAILED");
       setFailMessage(MESSAGE_CODE[res.code].message);
       return;
     }

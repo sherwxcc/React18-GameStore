@@ -87,10 +87,8 @@ export const deleteCartItem = async (userId, prodId) => {
 export const deleteCartAll = async (userId) => {
   try {
     let res = await apiRequest({
-      url: API.clearCart.url,
+      url: `${API.clearCart.url}/${userId}`,
       method: API.clearCart.method,
-      params: { userId },
-      data: {},
     });
     return res.data.list;
   } catch (error) {

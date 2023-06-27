@@ -17,6 +17,8 @@
   "myCart": "My Cart",
   "addToCart": "Add To Cart",
   "total": "Total",
+  "checkout": "Check Out",
+  "clearCart": "Clear",
   "cartIsEmpty": "Your cart is empty",
   "signIn": "Sign In",
   "register": "Register",
@@ -43,5 +45,18 @@
   "pageDoesntExist": "This page doesn't exist",
   "pleaseCheckUrl": "Please check your URL",
   "or": "or",
-  "returnHome": "Return to Home Page"
+  "returnHome": "Return to Home Page",
+  "addedToCart": "New item added to cart",
+  "updatedCart": "Cart item updated",
+  "placedOrder": "Your order is submitted successfully",
+  "orderNum": "Order#",
+  "orderDate": "Order Date",
+  "productName": "Product Name",
+  "quantity": "Quantity",
+  "status": "Status",
+  "unpaid": "Unpaid",
+  "paid": "Paid",
+  "delivered": "Delivered",
+  "cancelled": "Cancelled",
+  "refunded": "Refunded"
 }

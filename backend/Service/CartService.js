@@ -26,7 +26,7 @@ class CartService {
       return { code: 20000, list: result };
     } catch (error) {
       console.log(error);
-      return { code: 10000, message: "Something went wrong" };
+      return { code: 10000 };
     }
   }
 
@@ -39,7 +39,7 @@ class CartService {
       return result[0]?.quantity;
     } catch (error) {
       console.log(error);
-      return { code: 10000, message: "Something went wrong" };
+      return { code: 10000 };
     }
   }
 
@@ -51,10 +51,10 @@ class CartService {
         prod_id: prodId,
         quantity: 1,
       });
-      return { code: 20000, message: "Added new item" };
+      return { code: 20003 }; // Added new item
     } catch (error) {
       console.log(error);
-      return { code: 10000, message: "Something went wrong" };
+      return { code: 10000 };
     }
   }
 
@@ -65,10 +65,10 @@ class CartService {
         .where("user_id", userId)
         .andWhere("prod_id", prodId)
         .update("quantity", quantity);
-      return { code: 20000, message: "Updated cart" };
+      return { code: 20004 }; // Updated cart
     } catch (error) {
       console.log(error);
-      return { code: 10000, message: "Something went wrong" };
+      return { code: 10000 };
     }
   }
 
@@ -79,9 +79,9 @@ class CartService {
         .where("user_id", userId)
         .andWhere("prod_id", prodId)
         .del();
-      return { code: 20000, message: "Deleted item" };
+      return { code: 20004 }; // Updated cart
     } catch (error) {
-      return { code: 10000, message: "Something went wrong" };
+      return { code: 10000 };
     }
   }
 
@@ -89,10 +89,10 @@ class CartService {
   async deleteCartAll(userId) {
     try {
       await this.knex("tblCartDetails").where("user_id", userId).del();
-      return { code: 20000, message: "Cleared cart" };
+      return { code: 20004 }; // Updated cart
     } catch (error) {
       console.log(error);
-      return { code: 10000, message: "Something went wrong" };
+      return { code: 10000 };
     }
   }
 }

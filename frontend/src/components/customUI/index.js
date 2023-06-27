@@ -14,6 +14,12 @@ import {
   MenuTypography as CustomMenuTypography,
 } from "./CustomMenu";
 import CustomMessage from "./CustomMessage";
+import { CustomPagination } from "./CustomPagination";
+import {
+  TableHead as CustomTableHead,
+  TableRecord as CustomTableRecord,
+  TableValue as CustomTableValue,
+} from "./CustomTable";
 
 export {
   CustomBadge,
@@ -27,5 +33,9 @@ export {
   CustomMenuItemBox,
   CustomMenuTypography,
   CustomMessage,
+  CustomPagination,
   CustomProductCard,
+  CustomTableHead,
+  CustomTableRecord,
+  CustomTableValue,
 };
