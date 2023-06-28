@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 // Contexts
 import { CartContext, ColorContext } from "contexts/index";
+// Components
+import { CustomProductCard } from "components/customUI/index";
 // MUI
 import {
   Box,
@@ -12,8 +14,6 @@ import {
   Typography,
 } from "@mui/material/index";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-// Custom components
-import { CustomProductCard } from "components/customUI/index";
 // Utils
 import { formatPrice } from "utils/format";
 

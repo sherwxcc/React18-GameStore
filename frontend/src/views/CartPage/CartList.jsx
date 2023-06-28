@@ -44,10 +44,10 @@ function CartList() {
                 borderRadius: "10px",
               }}
             />
-            <Box sx={{ width: "35%", marginRight: "1rem" }}>
+            <Box mr="1rem" sx={{ width: "35%" }}>
               <Typography variant="subtitle2">{el.prod_name}</Typography>
             </Box>
-            <Box sx={{ marginRight: "1rem", display: "flex" }}>
+            <Box mr="1rem" sx={{ display: "flex" }}>
               <Button
                 onClick={() => {
                   el.quantity++;

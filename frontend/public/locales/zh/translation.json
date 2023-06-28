@@ -21,6 +21,7 @@
   "checkout": "購物車結帳",
   "clearCart": "清空",
   "cartIsEmpty": "您的購物車是空的",
+  "orderIsEmpty": "您沒有任何訂單",
   "signIn": "登錄",
   "register": "註冊",
   "logOut": "登出",

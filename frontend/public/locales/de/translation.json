@@ -20,6 +20,7 @@
   "checkout": "Kasse",
   "clearCart": "Leeren",
   "cartIsEmpty": "Ihr Warenkorb ist leer",
+  "orderIsEmpty": "Sie haben keine Bestellungen",
   "signIn": "Anmelden",
   "register": "Registrieren",
   "logOut": "Ausloggen",

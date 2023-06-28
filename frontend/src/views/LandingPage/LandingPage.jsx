@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 // MUI
 import { Box, Typography, SvgIcon } from "@mui/material/index";
-import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
+// import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 // Stylesheet
 import "./landingPage.scss";
 
@@ -18,11 +18,11 @@ function LandingPage() {
       <Box id="herobanner-content">
         <Box className="view">
           <Box>
-            <Typography variant="h1" sx={{ letterSpacing: "0.1em" }}>
+            <Typography variant="h1">
               {t("landingText").toUpperCase()}
             </Typography>
           </Box>
-          <Box>
+          {/* <Box>
             <SvgIcon>
               <KeyboardDoubleArrowDownIcon />
             </SvgIcon>
@@ -35,7 +35,7 @@ function LandingPage() {
             <SvgIcon>
               <KeyboardDoubleArrowDownIcon />
             </SvgIcon>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
     </Box>

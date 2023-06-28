@@ -15,10 +15,10 @@ export function MessageProvider({ children }) {
     });
     setTimeout(() => {
       setMessage({
-        severity: "info",
+        severity: "success",
         content: "",
       });
-    }, 4000);
+    }, 3000);
   };
 
   return (

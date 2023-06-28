@@ -20,6 +20,7 @@
   "checkout": "Check Out",
   "clearCart": "Clear",
   "cartIsEmpty": "Your cart is empty",
+  "orderIsEmpty": "You do not have any orders",
   "signIn": "Sign In",
   "register": "Register",
   "logOut": "Log Out",

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 // Contexts
 import ProductListContext from "contexts/ProductListContext";
-// MUI
-import { Box, Grid } from "@mui/material/index";
 // Components
 import ProductCard from "./ProductCard";
+// MUI
+import { Box, Grid } from "@mui/material/index";
 
 const ProductList = () => {
   const { productList } = useContext(ProductListContext);

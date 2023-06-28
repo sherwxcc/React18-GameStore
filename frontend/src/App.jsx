@@ -48,7 +48,12 @@ const App = () => {
               element={<ProductDetailPage />}
             />
             <Route path="policy" element={<PolicyPage />} />
-            <Route path="order" element={<OrderPage />} />
+            <Route
+              path="order"
+              element={
+                isLoggedIn ? <OrderPage /> : <Navigate to="/" replace="true" />
+              }
+            />
             <Route
               path="signin"
               element={

@@ -2,6 +2,12 @@ import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 // Contexts
 import { AccountContext, MessageContext } from "contexts/index";
+// Components
+import {
+  CustomButton,
+  CustomFormCard,
+  CustomFormHelperText,
+} from "components/customUI/index";
 // Hooks
 import useValidation from "hooks/useValidation";
 import useVisibility from "hooks/useVisibility";
@@ -17,12 +23,6 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
-// Custom components
-import {
-  CustomButton,
-  CustomFormCard,
-  CustomFormHelperText,
-} from "components/customUI/index";
 // Constants
 import MESSAGE_CODE from "data/messageCode";
 

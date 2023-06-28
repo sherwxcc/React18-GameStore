@@ -19,14 +19,7 @@ export function OrderProvider({ children }) {
   const [pageOffset, setPageOffset] = useState(0);
 
   useEffect(() => {
-    if (getLocalUserId()) {
-      getOrderList(getLocalUserId(), pageOffset).then((res) => {
-        setOrder(res.list);
-        setOrderCount(Math.ceil(res.count / PAGE_SIZE));
-      });
-    } else {
-      setOrder([]);
-    }
+    handleGetOrder();
   }, [pageOffset]);
 
   const handleAddOrder = async () => {
@@ -47,13 +40,35 @@ export function OrderProvider({ children }) {
     }
   };
 
+  const handleGetOrder = async () => {
+    if (getLocalUserId()) {
+      getOrderList(getLocalUserId(), pageOffset).then((res) => {
+        setOrder(res.list);
+        setOrderCount(Math.ceil(res.count / PAGE_SIZE));
+      });
+    } else {
+      setOrder([]);
+    }
+  };
+
   const handlePageOffset = (pageNum) => {
     setPageOffset(pageNum * PAGE_SIZE - PAGE_SIZE);
   };
 
+  const handleClearOrder = () => {
+    setOrder([]);
+  };
+
   return (
     <OrderContext.Provider
-      value={{ order, orderCount, handleAddOrder, handlePageOffset }}
+      value={{
+        order,
+        orderCount,
+        handleAddOrder,
+        handleGetOrder,
+        handlePageOffset,
+        handleClearOrder,
+      }}
     >
       {children}
     </OrderContext.Provider>

@@ -2,11 +2,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { getLocalUser, clearLocalUser } from "utils/localStorage";
 import { login, register } from "services/authService";
 import CartContext from "./CartContext";
+import OrderContext from "./OrderContext";
 
 const AccountContext = createContext();
 
 export function AccountProvider({ children }) {
   const { handleGetCart, handleClearCart } = useContext(CartContext);
+  const { handleClearOrder } = useContext(OrderContext);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({ token: "", userId: null, username: "" });
@@ -46,6 +48,7 @@ export function AccountProvider({ children }) {
     setUser({ token: "", userId: null, username: "" });
     setIsLoggedIn(false);
     handleClearCart();
+    handleClearOrder();
   };
 
   const handleRegister = async (data) => {

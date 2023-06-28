@@ -25,24 +25,27 @@
         transform: translateY(-50%);
         width: 60%;
         color: #fff;
-      }
-
-      & > div:last-child {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 0 auto;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: default;
-        transition-duration: 0.5s;
-        &:hover {
-          color: #fff;
+        & > h1 {
+          letter-spacing: 0.1em;
         }
       }
+
+      // & > div:last-child {
+      //   position: absolute;
+      //   bottom: 0;
+      //   left: 50%;
+      //   transform: translateX(-50%);
+      //   margin: 0 auto;
+      //   text-align: center;
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: center;
+      //   cursor: default;
+      //   transition-duration: 0.5s;
+      //   &:hover {
+      //     color: #fff;
+      //   }
+      // }
     }
   }
 }
