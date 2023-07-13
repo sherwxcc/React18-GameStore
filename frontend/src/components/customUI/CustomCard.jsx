@@ -10,6 +10,10 @@ export const FormCard = styled(Card).attrs(() => ({
   width: 40vw;
   max-width: 450px;
   box-shadow: 1px 1px 20px #9dbf9e40;
+  @media (max-width: 820px) {
+    min-width: 100%;
+    max-width: 100%;
+  }
 `;
 
 export const ProductCard = styled(Card).attrs(() => ({

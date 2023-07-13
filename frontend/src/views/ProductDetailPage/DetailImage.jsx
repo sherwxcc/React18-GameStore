@@ -10,9 +10,14 @@ const DetailImage = () => {
   return (
     <>
       {productDetail.img_url && (
-        <Box key={productDetail} sx={{ width: "40%", maxWidth: "350px" }}>
+        <Box
+          key={productDetail}
+          sx={{ width: "40%", maxWidth: "350px" }}
+          className="detail-content"
+        >
           <img
             src={require(`assets/images/products/${productDetail?.img_url}.png`)}
+            alt="Product"
             style={{ borderRadius: "15px", objectFit: "cover", width: "100%" }}
           />
         </Box>

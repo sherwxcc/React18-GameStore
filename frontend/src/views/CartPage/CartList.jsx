@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { CartContext } from "contexts/index";
 // Components
 import { CustomCartCard } from "components/customUI/index";
+import { useMediaQuery } from "@mui/material/index";
 // MUI
 import {
   Box,
@@ -22,7 +23,7 @@ import Empty from "assets/images/others/emptyBox.png";
 
 function CartList() {
   const { t } = useTranslation();
-
+  const isMobile = useMediaQuery("(max-width:700px)");
   const { cart, handleUpdateCart, handleDeleteCart } = useContext(CartContext);
 
   return (
@@ -31,20 +32,25 @@ function CartList() {
       {cart?.length ? (
         cart.map((el, i) => (
           <CustomCartCard key={el.prod_id}>
-            <Box sx={{ padding: "6px 8px", width: "5%" }}>
-              <Typography variant="subtitle2">{i + 1}</Typography>
-            </Box>
-            <CardMedia
-              component="img"
-              image={require(`assets/images/products/${el.img_url}.png`)}
-              alt={el.prod_name}
-              sx={{
-                maxWidth: "10%",
-                marginRight: "5%",
-                borderRadius: "10px",
-              }}
-            />
-            <Box mr="1rem" sx={{ width: "35%" }}>
+            {!isMobile && (
+              <Box sx={{ padding: "6px 8px", width: "5%" }}>
+                <Typography variant="subtitle2">{i + 1}</Typography>
+              </Box>
+            )}
+
+            {isMobile ? null : (
+              <CardMedia
+                component="img"
+                image={require(`assets/images/products/${el.img_url}.png`)}
+                alt={el.prod_name}
+                sx={{
+                  maxWidth: "10%",
+                  marginRight: "5%",
+                  borderRadius: "10px",
+                }}
+              />
+            )}
+            <Box mr="1rem" sx={{ width: "35%", flexShrink: "1" }}>
               <Typography variant="subtitle2">{el.prod_name}</Typography>
             </Box>
             <Box mr="1rem" sx={{ display: "flex" }}>

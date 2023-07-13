@@ -21,7 +21,7 @@ function CartPage() {
       {cart?.length ? (
         <>
           <Box
-            sx={{ display: "flex", justifyContent: "end", padding: "2.5rem" }}
+            sx={{ display: "flex", justifyContent: "end", padding: "2rem 1rem" }}
           >
             <Typography variant="subtitle2">{t("total")} : </Typography>
             <Typography

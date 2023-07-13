@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 // Utils
 import { getLocalLang } from "utils/localStorage";

@@ -22,7 +22,7 @@ const ProductList = () => {
           sx={{ width: "auto", margin: "auto" }}
         >
           {productList?.map((el, i) => (
-            <Grid item xs={6} sm={4} md={3} lg={3} xl={2} key={el.prod_id}>
+            <Grid item xs={12} sm={4} md={3} lg={3} xl={2} key={el.prod_id}>
               <ProductCard el={el} />
             </Grid>
           ))}

@@ -12,7 +12,7 @@ import {
   CustomTableValue,
 } from "components/customUI/index";
 // MUI
-import { Box, SvgIcon, Typography } from "@mui/material/index";
+import { Box, Typography } from "@mui/material/index";
 // Images
 import Empty from "assets/images/others/emptyBox.png";
 
@@ -27,7 +27,7 @@ function OrderList() {
     return () => {
       handlePageOffset(1); // Reset page offset when leave page
     };
-  }, []);
+  }, [handleGetOrder, handlePageOffset]);
 
   return (
     <>

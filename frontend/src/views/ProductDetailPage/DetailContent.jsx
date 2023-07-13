@@ -26,6 +26,7 @@ const DetailContent = () => {
           flexDirection: "column",
           justifyContent: "space-between",
         }}
+        className="detail-content"
       >
         <Box>
           <Typography variant="h4">{productDetail.prod_name}</Typography>

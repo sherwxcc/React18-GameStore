@@ -125,6 +125,7 @@ const globalStyle = {
       styleOverrides: {
         root: {
           fontSize: "1rem",
+          minWidth: "unset",
         },
       },
     },
