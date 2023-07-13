@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 // Contexts
+import { AccountContext } from "contexts/index";
 import CartContext from "contexts/CartContext";
 import ProductDetailContext from "contexts/ProductDetailContext";
 // Components
@@ -14,6 +15,7 @@ import { formatPrice } from "utils/format";
 const DetailContent = () => {
   const { t } = useTranslation();
 
+  const { isLoggedIn } = useContext(AccountContext);
   const { handleAddCart } = useContext(CartContext);
   const { productDetail } = useContext(ProductDetailContext);
 
@@ -77,6 +79,7 @@ const DetailContent = () => {
             color="primary"
             onClick={() => handleAddCart(productDetail.prod_id)}
             sx={{ margin: "unset" }}
+            disabled={!isLoggedIn}
           >
             {t("addToCart")}
           </CustomButton>

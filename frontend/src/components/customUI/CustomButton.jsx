@@ -5,8 +5,9 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material/index";
 
-const ContainedButton = styled(Button).attrs(() => ({
+const ContainedButton = styled(Button).attrs((props) => ({
   variant: "gradient",
+  disabled: props.disabled,
 }))`
   background: ${(props) => props.theme.palette.gradientLight};
   &:hover: {
@@ -14,7 +15,7 @@ const ContainedButton = styled(Button).attrs(() => ({
   }
 `;
 
-function CustomButton({ children, onClick }) {
+function CustomButton({ children, onClick, disabled }) {
   const { theme } = useContext(ColorContext);
 
   return (
@@ -25,6 +26,7 @@ function CustomButton({ children, onClick }) {
         fullWidth
         sx={{ my: "1rem" }}
         onClick={onClick}
+        disabled={disabled}
       >
         <Typography variant="subtitle2">{children}</Typography>
       </ContainedButton>

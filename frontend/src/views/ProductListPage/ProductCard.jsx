@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 // Contexts
-import { CartContext, ColorContext } from "contexts/index";
+import { AccountContext, CartContext, ColorContext } from "contexts/index";
 // Components
 import { CustomProductCard } from "components/customUI/index";
 // MUI
@@ -20,6 +20,7 @@ import { formatPrice } from "utils/format";
 const ProductCard = ({ el }) => {
   const { t } = useTranslation();
 
+  const { isLoggedIn } = useContext(AccountContext);
   const { theme } = useContext(ColorContext);
   const { handleAddCart } = useContext(CartContext);
 
@@ -63,7 +64,7 @@ const ProductCard = ({ el }) => {
             </Box>
             <Box
               sx={{ display: "flex" }}
-              onClick={() => handleAddCart(el.prod_id)}
+              onClick={() => (isLoggedIn ? handleAddCart(el.prod_id) : null)}
             >
               <AddShoppingCartIcon
                 sx={{
